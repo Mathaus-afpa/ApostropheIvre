@@ -57,7 +57,7 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
             ResultSet resultSet = stmt.executeQuery(selectSQL);
 
             while(resultSet.next()) {
-                listEmp.add(findEmprunt(resultSet.getInt("cli_id"), resultSet.getInt("liv_id"), resultSet.getInt("lib_id")));
+                listEmp.add(find(resultSet.getInt("cli_id"), resultSet.getInt("liv_id"), resultSet.getInt("lib_id")));
             }
 
             BDDservice.getInstance().closeConnection();
@@ -67,7 +67,7 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         return listEmp;
     }
 
-    public String updateEmprunt(Emprunt obj, Integer nCli, Integer nLiv, Integer nLib, Date nDate, Integer nStatut) {
+    public String update(Emprunt obj, Integer nCli, Integer nLiv, Integer nLib, Date nDate, Integer nStatut) {
         StringBuilder updateSQL = new StringBuilder("update Emprunter set cli_id=?, liv_id=?, lib_id=?, date_emprunt=?, statut=?" +
                 "where cli_id = ? AND liv_id = ? AND lib_id = ?");
         try {
@@ -91,7 +91,7 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         }
     }
 
-    public String deleteEmprunt(Emprunt obj) {
+    public String delete(Emprunt obj) {
         StringBuilder deleteSQL = new StringBuilder("delete from Emprunter where cli_id=? AND liv_id=? AND lib_id=?");
 
         try {
@@ -109,7 +109,7 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         }
     }
 
-    public Emprunt findEmprunt(Integer cli, Integer liv, Integer lib) {
+    public Emprunt find(Integer cli, Integer liv, Integer lib) {
         Emprunt emprunt = new Emprunt(null, null, null, null, null);
         StringBuilder selectById = new StringBuilder("select * from Emprunter where cli_id=? AND liv_id=? AND lib_id=?");
 
