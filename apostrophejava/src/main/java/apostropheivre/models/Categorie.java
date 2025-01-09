@@ -6,14 +6,12 @@ import java.util.List;
 public class Categorie {
     private int id;
     private String libelle;
-    private String description;
     private List<Livre> livres;
 
     // Constructeur
-    public Categorie(int id, String libelle, String description) {
+    public Categorie(int id, String libelle) {
         setId(id);
         setLibelle(libelle);
-        setDescription(description);
         this.livres = new ArrayList<>();
     }
 
@@ -44,17 +42,6 @@ public class Categorie {
             throw new IllegalArgumentException("Le libellé contient des caractères invalides");
         }
         this.libelle = libelle.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        if (description != null && description.length() > 500) {
-            throw new IllegalArgumentException("La description ne peut pas dépasser 500 caractères");
-        }
-        this.description = description;
     }
 
     public List<Livre> getLivres() {
