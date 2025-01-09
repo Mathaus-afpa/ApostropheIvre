@@ -14,7 +14,7 @@ public class LivreDAO {
     }
 
     public void ajouter(Livre livre) throws SQLException {
-        String sql = "INSERT INTO livres (titre, auteur, isbn, resume, quantite, categorie_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO livre (liv_titre, liv_auteur, isbn, liv_resume, liv_quantite, cat_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, livre.getTitre());
@@ -29,7 +29,7 @@ public class LivreDAO {
     }
 
     public void modifier(Livre livre) throws SQLException {
-        String sql = "UPDATE livres SET titre = ?, auteur = ?, resume = ?, quantite = ?, categorie_id = ? WHERE isbn = ?";
+        String sql = "UPDATE livre SET liv_titre = ?, liv_auteur = ?, liv_resume = ?, liv_quantite = ?, cat_id = ? WHERE isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, livre.getTitre());
@@ -44,7 +44,7 @@ public class LivreDAO {
     }
 
     public void supprimer(String isbn) throws SQLException {
-        String sql = "DELETE FROM livres WHERE isbn = ?";
+        String sql = "DELETE FROM livre WHERE isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, isbn);
@@ -53,8 +53,8 @@ public class LivreDAO {
     }
 
     public Livre trouverParIsbn(String isbn) throws SQLException {
-        String sql = "SELECT l.*, c.id as cat_id, c.nom as cat_nom FROM livres l " +
-                "JOIN categories c ON l.categorie_id = c.id " +
+        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
+                "JOIN categorie c ON l.cat_id = c.cat_id " +
                 "WHERE l.isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -71,8 +71,8 @@ public class LivreDAO {
 
     public List<Livre> listerTous() throws SQLException {
         List<Livre> livres = new ArrayList<>();
-        String sql = "SELECT l.*, c.id as cat_id, c.nom as cat_nom FROM livres l " +
-                "JOIN categories c ON l.categorie_id = c.id";
+        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
+                "JOIN categorie c ON l.cat_id = c.cat_id";
 
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -86,9 +86,9 @@ public class LivreDAO {
 
     public List<Livre> rechercherParTitre(String titre) throws SQLException {
         List<Livre> livres = new ArrayList<>();
-        String sql = "SELECT l.*, c.id as cat_id, c.nom as cat_nom FROM livres l " +
-                "JOIN categories c ON l.categorie_id = c.id " +
-                "WHERE LOWER(l.titre) LIKE LOWER(?)";
+        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
+                "JOIN categorie c ON l.cat_id = c.cat_id " +
+                "WHERE LOWER(l.liv_titre) LIKE LOWER(?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, "%" + titre + "%");

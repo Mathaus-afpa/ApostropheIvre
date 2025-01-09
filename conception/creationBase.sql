@@ -8,6 +8,9 @@ CREATE TABLE CLIENT (
     cli_id INT PRIMARY KEY AUTO_INCREMENT,
     cli_email VARCHAR(100) NOT NULL,
     cli_nom VARCHAR(50) NOT NULL,
+    cli_adresse VARCHAR(255),
+    cli_codePostale VARCHAR(5),
+    cli_ville VARCHAR(50),
     cli_prenom VARCHAR(50) NOT NULL
 );
 
@@ -37,6 +40,7 @@ CREATE TABLE LIVRE (
     liv_titre VARCHAR(100) NOT NULL,
     liv_resume TEXT,
     liv_image VARCHAR(255),
+    isbn int,
     liv_quantite INT NOT NULL DEFAULT 0,
     cat_id INT,
     aut_id INT,
