@@ -40,7 +40,7 @@ CREATE TABLE LIVRE (
     liv_titre VARCHAR(100) NOT NULL,
     liv_resume TEXT,
     liv_image VARCHAR(255),
-    isbn int,
+    isbn VARCHAR(25),
     liv_quantite INT NOT NULL DEFAULT 0,
     cat_id INT,
     aut_id INT,
