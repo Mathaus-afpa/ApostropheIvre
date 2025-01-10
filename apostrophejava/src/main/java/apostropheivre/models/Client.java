@@ -11,10 +11,10 @@ public class Client {
 	private String ville;
 	private String email;
 
-	private final String regexNom = "^[a-zA-Zà-üÀ-Ü\\s-]+$";
-	private final String regexAdresse = "^([0-9]*?\\s?)+[a-zA-Zà-üÀ-Ü\\s-',]+$";
-	private final String regexCodePostal = "^[0-9]{2}( ?)[0-9]{3}$";
-	private final String regexVille = "^[a-zA-Zà-üÀ-Ü\\s-]+$";
+	private final String regexNom = "^[a-zA-Zà-üÀ-Üß]+([\\s-][a-zA-Zà-üÀ-Üß]+)*$";
+	private final String regexAdresse = "^[0-9]*([\\s-]|,\\s)?[a-zA-Zà-üÀ-Ü]+(([\\s'-]|,\\s)[0-9a-zA-Zà-üÀ-Ü]+)*$";
+	private final String regexCodePostal = "^[0-9]{2}\\s?[0-9]{3}$";
+	private final String regexVille = "^[a-zA-Zà-üÀ-Üß]+([\\s-][a-zA-Zà-üÀ-Üß]+)*$";
 	private final String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 
 	public void setNdf(String ndf) throws InputMismatchException {
