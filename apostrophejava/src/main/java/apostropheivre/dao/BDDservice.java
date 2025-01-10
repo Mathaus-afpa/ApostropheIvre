@@ -78,6 +78,7 @@ public class BDDservice {
 		if (this.connection != null) {
 			try {
 				this.connection.close();
+				Log.info("Connection fermée : " + this.connection.isClosed());
 			} catch (SQLException e) {
 				Log.error(e.getMessage(), e.getCause());
 			}

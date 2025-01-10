@@ -1,0 +1,3 @@
+<div>
+    COMPTE ADMINISTRATEUR
+</div>
