@@ -109,7 +109,7 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         }
     }
 
-    public Emprunt find(Integer cli, Integer liv, Integer lib) {
+    public Emprunt find(Integer cli, Integer liv, Integer lib) throws SQLException {
         Emprunt emprunt = new Emprunt(null, null, null, null, null);
         StringBuilder selectById = new StringBuilder("select * from Emprunter where cli_id=? AND liv_id=? AND lib_id=?");
 
