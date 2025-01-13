@@ -1,5 +1,4 @@
 package apostropheivre.visiteurs;
-import apostropheivre.dao.AuteurDAO;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,7 +12,6 @@ public class AuteursServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("auteurs", new AuteurDAO().findAll());
             request.setAttribute("page", "/WEB-INF/Vues/Visiteur/auteurs.jsp");
             RequestDispatcher dispatcher = request.getRequestDispatcher("app.jsp");
             dispatcher.forward(request, response);
