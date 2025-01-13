@@ -1,0 +1,3 @@
+<div>
+    LIVRE DETAIL
+</div>
