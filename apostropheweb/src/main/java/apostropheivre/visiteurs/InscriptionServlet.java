@@ -12,6 +12,7 @@ public class InscriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+
             request.setAttribute("page", "/WEB-INF/Vues/Visiteur/inscription.jsp");
             RequestDispatcher dispatcher = request.getRequestDispatcher("app.jsp");
             dispatcher.forward(request, response);
