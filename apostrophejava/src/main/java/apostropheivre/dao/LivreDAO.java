@@ -14,7 +14,7 @@ public class LivreDAO {
     }
 
     public void ajouter(Livre livre) throws SQLException {
-        String sql = "INSERT INTO livre (liv_titre, liv_auteur, isbn, liv_resume, liv_quantite, cat_id) VALUES (?, ?, ?, ?, ?, ?)";
+String sql = "INSERT INTO livre (liv_titre, liv_auteur, isbn, liv_resume, liv_quantite, cat_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, livre.getTitre());
@@ -29,7 +29,7 @@ public class LivreDAO {
     }
 
     public void modifier(Livre livre) throws SQLException {
-        String sql = "UPDATE livre SET liv_titre = ?, liv_auteur = ?, liv_resume = ?, liv_quantite = ?, cat_id = ? WHERE isbn = ?";
+String sql = "UPDATE livre SET liv_titre = ?, liv_auteur = ?, liv_resume = ?, liv_quantite = ?, cat_id = ? WHERE isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, livre.getTitre());
