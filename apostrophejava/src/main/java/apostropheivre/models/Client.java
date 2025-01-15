@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 
 public class Client {
 
-	private String ndf;
+	private String nom;
 	private String prenom;
 	private String adresse;
 	private String codePostal;
@@ -17,14 +17,14 @@ public class Client {
 	private final String regexVille = "^[a-zA-Zà-üÀ-Üß]+([\\s-][a-zA-Zà-üÀ-Üß]+)*$";
 	private final String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 
-	public void setNdf(String ndf) throws InputMismatchException {
-		if (!ndf.matches(regexNom)) {
+	public void setNom(String nom) throws InputMismatchException {
+		if (!nom.matches(regexNom)) {
 			throw new InputMismatchException("Merci de saisir un nom valide.");
 		}
-		this.ndf = ndf;
+		this.nom = nom;
 	}
-	public String getNdf() {
-		return this.ndf;
+	public String getNom() {
+		return this.nom;
 	}
 
 	public void setPrenom(String prenom) throws InputMismatchException {
@@ -77,9 +77,14 @@ public class Client {
 		return this.email;
 	}
 
-	public Client(String ndf, String prenom, String adresse, String codePostal, String ville, String email)
+	public String toString(String param) {
+		return("Nom : "+this.prenom+" "+this.nom+"<br/>"+"Adresse : "+this.adresse+", "+this.codePostal+" "+this.ville+
+		"<br/>"+"Contact : "+this.email);
+	}
+
+	public Client(String nom, String prenom, String adresse, String codePostal, String ville, String email)
 		throws InputMismatchException, NullPointerException, IllegalArgumentException {
-		setNdf(ndf);
+		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
 		setCodePostal(codePostal);
