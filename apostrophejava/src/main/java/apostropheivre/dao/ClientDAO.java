@@ -3,6 +3,7 @@ package apostropheivre.dao;
 import apostropheivre.models.Client;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ClientDAO extends DAOgenerale<Client> {
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(insertSQL.toString(),PreparedStatement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, obj.getNdf());
+            pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
             pstmt.setString(4, obj.getCodePostal());
@@ -40,12 +41,12 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public String update(Client obj, Integer pId) {
-        StringBuilder updateSQL = new StringBuilder("update Client set cli_ndf=?, cli_prenom=?, cli_Adresse=?, cli_codepostal=?," +
+        StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_codepostal=?," +
                 "cli_ville=?, cli_email=? where cli_id = ?");
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
-            pstmt.setString(1, obj.getNdf());
+            pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
             pstmt.setString(4, obj.getCodePostal());
@@ -83,7 +84,7 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public Client find(Integer pId) {
-        Client client = new Client(null, null, null, null, null, null);
+        Client client = new Client("a", "a", "1a", "00001", "A", "aa@aa.aa");
 
         StringBuilder selectById = new StringBuilder("select * from client where cli_id=?");
 
@@ -94,10 +95,10 @@ public class ClientDAO extends DAOgenerale<Client> {
             ResultSet resultSet = pstmt.executeQuery();
 
             while(resultSet.next()) {
-                client.setNdf(resultSet.getString("Cli_ndf"));
+                client.setNom(resultSet.getString("Cli_nom"));
                 client.setPrenom(resultSet.getString("Cli_prenom"));
                 client.setAdresse(resultSet.getString("Cli_Adresse"));
-                client.setCodePostal(resultSet.getString("Cli_CodePostal"));
+                client.setCodePostal(resultSet.getString("Cli_Code_Postal"));
                 client.setVille(resultSet.getString("Cli_Ville"));
                 client.setEmail(resultSet.getString("Cli_Email"));
             }
@@ -111,8 +112,8 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public List findAll() {
-        String selectSQL = "select id_Client from client";
-        List<Client> listCli = Arrays.asList();
+        String selectSQL = "select * from client";
+        List<Client> listCli = new ArrayList<>();
 
         try {
             Connection con = BDDservice.getInstance().getConnection();
@@ -120,7 +121,16 @@ public class ClientDAO extends DAOgenerale<Client> {
             ResultSet resultSet = stmt.executeQuery(selectSQL);
 
             while(resultSet.next()) {
-                listCli.add(find(resultSet.getInt("id_Client")));
+                Client client = new Client("a", "a", "1a", "00001", "A", "aa@aa.aa");
+
+                client.setNom(resultSet.getString("Cli_nom"));
+                client.setPrenom(resultSet.getString("Cli_prenom"));
+                client.setAdresse(resultSet.getString("Cli_Adresse"));
+                client.setCodePostal(resultSet.getString("Cli_Code_Postal"));
+                client.setVille(resultSet.getString("Cli_Ville"));
+                client.setEmail(resultSet.getString("Cli_Email"));
+
+                listCli.add(client);
             }
 
             BDDservice.getInstance().closeConnection();
