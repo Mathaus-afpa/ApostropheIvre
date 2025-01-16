@@ -4,9 +4,9 @@
     <a href="${pageContext.request.contextPath}/connexion">/connexion</a><br><br>
     <a href="${pageContext.request.contextPath}/deconnexion">/deconnexion</a><br><br>
     <a href="${pageContext.request.contextPath}/livres">/livres</a><br><br>
-    <a href="${pageContext.request.contextPath}/livres/details?id=1">/livres/details?id=1</a><br><br>
+    <a href="${pageContext.request.contextPath}/livre/details?id=1">/livre/details?id=1</a><br><br>
     <a href="${pageContext.request.contextPath}/auteurs">/auteurs</a><br><br>
-    <a href="${pageContext.request.contextPath}/auteurs/details?id=1">/auteurs/details?id=1</a><br><br>
+    <a href="${pageContext.request.contextPath}/auteur/details?id=1">/auteur/details?id=1</a><br><br>
     <a href="${pageContext.request.contextPath}/administrateur">/administrateur</a><br><br>
     <a href="${pageContext.request.contextPath}/client">/client</a><br><br>
     <a href="${pageContext.request.contextPath}/libraire">/libraire</a><br><br>
