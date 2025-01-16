@@ -3,81 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="${pageContext.request.contextPath}/tailwind.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Apostrophe Ivre</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-        }
-        .sidebar {
-            width: 80px;
-            background-color: #3e8055;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            height: 100vh;
-        }
-        .sidebar a {
-            color: #fff;
-            margin: 15px 0;
-            text-decoration: none;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-        }
-        .content {
-            flex: 1;
-            background-color: #f4f7f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .breadcrumb {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 20px;
-        }
-        .breadcrumb a {
-            color: #3e8055;
-            text-decoration: none;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-container button {
-            background-color: #3e8055;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #2e6342;
-        }
-        .form-container .forgot-password {
-            margin-top: 15px;
-            display: block;
-            color: #3e8055;
-            text-decoration: none;
-        }
-        .form-container .forgot-password:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
-<body>
+<body class="bg-gray-200 flex content-center justify-center h-full items-center font-['Roboto']">
