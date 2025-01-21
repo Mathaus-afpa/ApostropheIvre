@@ -1,36 +1,147 @@
-<div>
-    <a href="${pageContext.request.contextPath}/accueil">/accueil</a><br><br>
-    <a href="${pageContext.request.contextPath}/inscription">/inscription</a><br><br>
-    <a href="${pageContext.request.contextPath}/connexion">/connexion</a><br><br>
-    <a href="${pageContext.request.contextPath}/deconnexion">/deconnexion</a><br><br>
-    <a href="${pageContext.request.contextPath}/livres">/livres</a><br><br>
-    <a href="${pageContext.request.contextPath}/livre/details?id=1">/livre/details?id=1</a><br><br>
-    <a href="${pageContext.request.contextPath}/auteurs">/auteurs</a><br><br>
-    <a href="${pageContext.request.contextPath}/auteur/details?id=1">/auteur/details?id=1</a><br><br>
-    <a href="${pageContext.request.contextPath}/administrateur">/administrateur</a><br><br>
-    <a href="${pageContext.request.contextPath}/client">/client</a><br><br>
-    <a href="${pageContext.request.contextPath}/libraire">/libraire</a><br><br>
-<%--    <a href="${pageContext.request.contextPath}/livres/recherche">/livres/recherche</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/auteurs/recherche">/auteurs/recherche</a><br><br>--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--    <a href="${pageContext.request.contextPath}/compte">/compte</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion">/gestion</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/livres">/gestion/livres</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/auteurs">/gestion/auteurs</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/categories">/gestion/categories</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/emprunts">/gestion/emprunts</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/libraires">/gestion/libraires</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/clients">/gestion/clients</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/compte">/gestion/compte</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/livres/1">/gestion/livres/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/auteurs/1">/gestion/auteurs/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/categories/1">/gestion/categories/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/emprunts/1">/gestion/emprunts/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/libraires/1">/gestion/libraires/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/clients/1">/gestion/clients/{id}</a><br><br>--%>
-<%--    <a href="${pageContext.request.contextPath}/gestion/compte/1">/gestion/compte/{id}</a><br><br>--%>
-    <a href="${pageContext.request.contextPath}">+</a><br><br>
-    <a href="${pageContext.request.contextPath}">+</a><br><br>
-    <a href="${pageContext.request.contextPath}">+</a><br><br>
+<h1 class="text text-7xl mt-3">Bienvenue !</h1>
+
+<div
+        class="mt-16 flex items-center border w-80 focus-within:border-neutral-500 transition duration-300 pr-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-[5px] overflow-hidden">
+
+    <input
+            type="text"
+            placeholder="Rechercher un livre"
+            class="w-full h-full pl-4 outline-none placeholder-gray-500 text-sm"/>
+
+    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="22"
+            height="22"
+            viewBox="0 0 30 30"
+            fill="#6B7280">
+
+        <path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"
+        ></path>
+    </svg>
 
 </div>
+
+<h2 class="space-y-96 text-5xl mt-20">Nouveautés :</h2>
+
+<div class="card-container flex justify-center mt-8 gap-20">
+
+    <!--  Début Livres cards -->
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+
+        <a href="${pageContext.request.contextPath}/livre/details">
+
+            <img src="${pageContext.request.contextPath}/Images/livres/2757851357.jpg" alt="photo livre"
+                 class="h-80 w-80 object-cover rounded-t-xl"/>
+
+            <div class="px-3 py-3 w-full">
+
+                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
+
+                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
+
+                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
+
+                <div class="flex items-center">
+
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
+
+                </div>
+
+                <div class="mt-4 text-sm font-medium">
+
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            href="#">
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+    <!--  Fin Livres cards -->
+
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+
+        <a href="${pageContext.request.contextPath}/livres/details">
+
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
+
+            <div class="px-3 py-3 w-full">
+
+                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
+
+                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
+
+                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
+
+                <div class="flex items-center">
+
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
+
+                </div>
+
+                <div class="mt-4 text-sm font-medium">
+
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            href="#">
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+
+        <a href="${pageContext.request.contextPath}/livres/details">
+
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
+
+            <div class="px-3 py-3 w-full">
+
+                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
+
+                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
+
+                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
+
+                <div class="flex items-center">
+
+                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
+
+                </div>
+
+                <div class="mt-4 text-sm font-medium">
+
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            href="#">
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
