@@ -14,7 +14,7 @@ public class UserDatabase {
 	// Paramètres de connexion à la base de données
 	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/apostropheivrelogin";
 	private static final String JDBC_USER = "root"; // Utilisateur MySQL
-	private static final String JDBC_PASSWORD = "groot"; // Remplacer par votre mot de passe MySQL
+	private static final String JDBC_PASSWORD = "root"; // Remplacer par votre mot de passe MySQL
 
 	// Méthode pour valider l'utilisateur en vérifiant le mot de passe
 	public static boolean validateUser(String username, String password) {
