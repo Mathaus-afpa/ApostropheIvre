@@ -2,6 +2,7 @@ package apostropheivre.dao;
 
 import apostropheivre.models.Livre;
 import apostropheivre.models.Categorie;
+import apostropheivre.models.Auteur;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,37 +15,47 @@ public class LivreDAO {
     }
 
     public void ajouter(Livre livre) throws SQLException {
-        String sql = "INSERT INTO livre (liv_titre, liv_auteur, isbn, liv_resume, liv_quantite, cat_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO LIVRE (liv_titre, liv_resume, liv_image, liv_isbn, " +
+                "liv_quantite, cat_id, aut_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, livre.getTitre());
-            stmt.setString(2, livre.getAuteur());
-            stmt.setString(3, livre.getIsbn());
-            stmt.setString(4, livre.getResume());
+            stmt.setString(2, livre.getResume());
+            stmt.setString(3, livre.getImage());
+            stmt.setString(4, livre.getIsbn());
             stmt.setInt(5, livre.getQuantite());
-            stmt.setInt(6, livre.getCategorie().getId());
+            stmt.setObject(6, livre.getIdCategorie());
+            stmt.setObject(7, livre.getIdAuteur());
 
             stmt.executeUpdate();
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    livre.setId(generatedKeys.getInt(1));
+                }
+            }
         }
     }
 
     public void modifier(Livre livre) throws SQLException {
-        String sql = "UPDATE livre SET liv_titre = ?, liv_auteur = ?, liv_resume = ?, liv_quantite = ?, cat_id = ? WHERE isbn = ?";
+        String sql = "UPDATE LIVRE SET liv_titre = ?, liv_resume = ?, liv_image = ?, liv_quantite = ?, " +
+                "cat_id = ?, aut_id = ? WHERE liv_isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, livre.getTitre());
-            stmt.setString(2, livre.getAuteur());
-            stmt.setString(3, livre.getResume());
+            stmt.setString(2, livre.getResume());
+            stmt.setString(3, livre.getImage());
             stmt.setInt(4, livre.getQuantite());
-            stmt.setInt(5, livre.getCategorie().getId());
-            stmt.setString(6, livre.getIsbn());
+            stmt.setObject(5, livre.getIdCategorie());
+            stmt.setObject(6, livre.getIdAuteur());
+            stmt.setString(7, livre.getIsbn());
 
             stmt.executeUpdate();
         }
     }
 
     public void supprimer(String isbn) throws SQLException {
-        String sql = "DELETE FROM livre WHERE isbn = ?";
+        String sql = "DELETE FROM LIVRE WHERE liv_isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, isbn);
@@ -53,9 +64,7 @@ public class LivreDAO {
     }
 
     public Livre trouverParIsbn(String isbn) throws SQLException {
-        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
-                "JOIN categorie c ON l.cat_id = c.cat_id " +
-                "WHERE l.isbn = ?";
+        String sql = "SELECT * FROM LIVRE WHERE liv_isbn = ?;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, isbn);
@@ -71,8 +80,7 @@ public class LivreDAO {
 
     public List<Livre> listerTous() throws SQLException {
         List<Livre> livres = new ArrayList<>();
-        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
-                "JOIN categorie c ON l.cat_id = c.cat_id";
+        String sql = "SELECT l.* FROM LIVRE l;";
 
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -86,8 +94,8 @@ public class LivreDAO {
 
     public List<Livre> rechercherParTitre(String titre) throws SQLException {
         List<Livre> livres = new ArrayList<>();
-        String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
-                "JOIN categorie c ON l.cat_id = c.cat_id " +
+        String sql = "SELECT l.* " +
+                "FROM LIVRE l " +
                 "WHERE LOWER(l.liv_titre) LIKE LOWER(?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -103,23 +111,21 @@ public class LivreDAO {
     }
 
     private Livre creerLivreDepuisResultSet(ResultSet rs) throws SQLException {
-        Categorie categorie = new Categorie(
-                rs.getInt("cat_id"),
-                rs.getString("cat_nom")
-        );
+        Livre livre = new Livre();
+        livre.setId(rs.getInt("liv_id"));
+        livre.setTitre(rs.getString("liv_titre"));
+        livre.setResume(rs.getString("liv_resume"));
+        livre.setImage(rs.getString("liv_image"));
+        livre.setIsbn(rs.getString("liv_isbn"));
+        livre.setQuantite(rs.getInt("liv_quantite"));
+        livre.setIdCategorie(rs.getInt("cat_id"));
+        livre.setIdAuteur(rs.getInt("aut_id"));
 
-        return new Livre(
-                rs.getString("titre"),
-                rs.getString("auteur"),
-                rs.getString("isbn"),
-                rs.getString("resume"),
-                rs.getInt("quantite"),
-                categorie
-        );
+        return livre;
     }
 
     public boolean isbnExiste(String isbn) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM livres WHERE isbn = ?";
+        String sql = "SELECT COUNT(*) FROM LIVRE WHERE liv_isbn = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, isbn);

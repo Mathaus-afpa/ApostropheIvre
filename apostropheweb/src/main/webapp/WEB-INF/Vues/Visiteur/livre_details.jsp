@@ -19,8 +19,15 @@
                         <td><c:out value="${livre.titre}"/></td>
                     </tr>
                     <tr>
+                        <th>Image</th>
+                        <td><img
+                            src="${pageContext.request.contextPath}/Images/livres/<c:out value='${livre.image}'/>"
+                            alt="<c:out value='${livre.titre}'/>">
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Auteur</th>
-                        <td><c:out value="${livre.auteur}"/></td>
+                        <td><c:out value="${livre.idAuteur}"/></td>
                     </tr>
                     <tr>
                         <th>ISBN</th>
@@ -36,7 +43,7 @@
                     </tr>
                     <tr>
                         <th>Catégorie</th>
-                        <td><c:out value="${livre.categorie.nom}"/></td>
+                        <td><c:out value="${livre.idCategorie}"/></td>
                     </tr>
                 </table>
 

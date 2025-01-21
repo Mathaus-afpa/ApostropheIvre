@@ -30,9 +30,7 @@ public class LivreDetailsServlet extends HttpServlet {
 
             if (id != null && !id.trim().isEmpty()) {
                 connection = BDDservice.getInstance().getConnection();
-                String sql = "SELECT l.*, c.cat_id as cat_id, c.cat_libelle as cat_nom FROM livre l " +
-                        "JOIN categorie c ON l.cat_id = c.cat_id " +
-                        "WHERE l.id = ?";
+                String sql = "SELECT l.* FROM livre l WHERE l.liv_id = ?";
 
                 pstmt = connection.prepareStatement(sql);
                 pstmt.setString(1, id);
@@ -40,17 +38,13 @@ public class LivreDetailsServlet extends HttpServlet {
 
                 if (rs.next()) {
                     Livre livre = new Livre();
-                    livre.setTitre(rs.getString("titre"));
-                    livre.setAuteur(rs.getString("auteur"));
-                    livre.setIsbn(rs.getString("isbn"));
-                    livre.setResume(rs.getString("resume"));
-                    livre.setQuantite(rs.getInt("quantite"));
-
-                    Categorie categorie = new Categorie(
-                            rs.getInt("cat_id"),
-                            rs.getString("cat_nom"));
-                    categorie.setLibelle(rs.getString("categorie_nom"));
-                    livre.setCategorie(categorie);
+                    livre.setTitre(rs.getString("liv_titre"));
+                    livre.setIdAuteur(rs.getInt("aut_id"));
+                    livre.setIsbn(rs.getString("liv_isbn"));
+                    livre.setResume(rs.getString("liv_resume"));
+                    livre.setQuantite(rs.getInt("liv_quantite"));
+                    livre.setIdCategorie(rs.getInt("cat_id"));
+                    livre.setImage(rs.getString("liv_image"));
 
                     request.setAttribute("livre", livre);
                 }

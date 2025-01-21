@@ -15,6 +15,10 @@ public class Categorie {
         this.livres = new ArrayList<>();
     }
 
+    public Categorie() {
+
+    }
+
     // Getters et setters
     public int getId() {
         return id;
@@ -38,7 +42,7 @@ public class Categorie {
         if (libelle.length() > 50) {
             throw new IllegalArgumentException("Le libellé ne peut pas dépasser 50 caractères");
         }
-        if (!libelle.matches("^[a-zA-ZÀ-ÿ\\s-]{2,50}$")) {
+        if (!libelle.matches("^[a-zA-ZÀ&-ÿ\\s-]{2,50}$")) {
             throw new IllegalArgumentException("Le libellé contient des caractères invalides");
         }
         this.libelle = libelle.trim();
