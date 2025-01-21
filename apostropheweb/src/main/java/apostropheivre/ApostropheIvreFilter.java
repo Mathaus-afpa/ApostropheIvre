@@ -14,7 +14,9 @@ public class ApostropheIvreFilter implements Filter {
 	private static final List<String> ALLOWED_METHODS = Arrays.asList("GET", "POST", "PUT", "DELETE");
 	// Pages accessibles par les utilisateurs standards
 
-	public static final List<String> PAGES_VISITEUR = Arrays.asList("/", "/accueil", "/inscription", "/connexion", "/livres", "/livre/details", "/auteurs", "/auteur/details");
+	public static final List<String> PAGES_VISITEUR = Arrays.asList("/", "/accueil", "/inscription",
+			"/connexion",
+			"/livres", "/livre/details", "/auteurs", "/auteur/details");
 	public static final List<String> PAGES_CLIENT = Arrays.asList("/client");
 	public static final List<String> PAGES_LIBRAIRE = Arrays.asList("/libraire", "/client");
 	public static final List<String> PAGES_ADMIN = Arrays.asList("/administrateur", "/libraire", "/client");
@@ -34,7 +36,7 @@ public class ApostropheIvreFilter implements Filter {
 				String path = httpRequest.getServletPath();
 				System.out.println(path + " " + role);
 				boolean hasAccess = false;
-				if (PAGES_VISITEUR.contains(path)) {
+				if (PAGES_VISITEUR.contains(path) || path.indexOf(".") != -1) {
 					hasAccess = true; // Les pages publiques sont accessibles à tout le monde
 				} else if ("administrateur".equals(role) && PAGES_ADMIN.contains(path)) {
 					hasAccess = true; // Les admins peuvent accéder aux pages admin

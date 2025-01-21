@@ -3,7 +3,7 @@
 <h1 class="text text-7xl mt-3">Bienvenue !</h1>
 
 <div
-        class="mt-16 flex items-center border w-80 focus-within:border-indigo-500 transition duration-300 pr-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-[5px] overflow-hidden">
+        class="mt-16 flex items-center border w-80 focus-within:border-neutral-500 transition duration-300 pr-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-[5px] overflow-hidden">
 
     <input
             type="text"
@@ -25,18 +25,19 @@
 
 </div>
 
-<h2 class="space-y-96 text-5xl mt-32">Nouveautés:</h2>
+<h2 class="space-y-96 text-5xl mt-20">Nouveautés :</h2>
 
 <div class="card-container flex justify-center mt-8 gap-20">
 
     <!--  Début Livres cards -->
-    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 
-        <a href="${pageContext.request.contextPath}/livres/details">
+        <a href="${pageContext.request.contextPath}/livre/details">
 
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-72 object-cover rounded-t-xl" />
+            <img src="${pageContext.request.contextPath}/Images/livres/2757851357.jpg" alt="photo livre"
+                 class="h-80 w-80 object-cover rounded-t-xl"/>
 
-            <div class="px-4 py-3 w-72">
+            <div class="px-3 py-3 w-full">
 
                 <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
 
@@ -50,11 +51,12 @@
 
                 </div>
 
-                <div class="flex mb-4 text-sm font-medium justify-end">
+                <div class="mt-4 text-sm font-medium">
 
-                    <a class="group flex items-center justify-between gap-4 rounded-lg border border-current px-5 py-3 text-indigo-600 transition-colors hover:bg-indigo-600 focus:outline-none focus:ring active:bg-indigo-500"
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
                             href="#">
-                        <span class="font-medium transition-colors group-hover:text-white">Emprunter</span>
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
 
                     </a>
 
@@ -67,13 +69,13 @@
     </div>
     <!--  Fin Livres cards -->
 
-    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 
         <a href="${pageContext.request.contextPath}/livres/details">
 
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-72 object-cover rounded-t-xl" />
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
 
-            <div class="px-4 py-3 w-72">
+            <div class="px-3 py-3 w-full">
 
                 <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
 
@@ -87,11 +89,12 @@
 
                 </div>
 
-                <div class="flex mb-4 text-sm font-medium justify-end">
+                <div class="mt-4 text-sm font-medium">
 
-                    <a class="group flex items-center justify-between gap-4 rounded-lg border border-current px-5 py-3 text-indigo-600 transition-colors hover:bg-indigo-600 focus:outline-none focus:ring active:bg-indigo-500"
-                       href="#">
-                        <span class="font-medium transition-colors group-hover:text-white">Emprunter</span>
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            href="#">
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
 
                     </a>
 
@@ -103,13 +106,13 @@
 
     </div>
 
-    <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 
         <a href="${pageContext.request.contextPath}/livres/details">
 
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-72 object-cover rounded-t-xl" />
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
 
-            <div class="px-4 py-3 w-72">
+            <div class="px-3 py-3 w-full">
 
                 <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
 
@@ -123,11 +126,12 @@
 
                 </div>
 
-                <div class="flex mb-4 text-sm font-medium justify-end">
+                <div class="mt-4 text-sm font-medium">
 
-                    <a class="group flex items-center justify-between gap-4 rounded-lg border border-current px-5 py-3 text-indigo-600 transition-colors hover:bg-indigo-600 focus:outline-none focus:ring active:bg-indigo-500"
-                       href="#">
-                        <span class="font-medium transition-colors group-hover:text-white">Emprunter</span>
+                    <a
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            href="#">
+                        <span class="font-medium group-hover:text-white">Emprunter</span>
 
                     </a>
 
