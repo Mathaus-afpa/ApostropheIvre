@@ -11,7 +11,7 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public int create(Client obj) {
-        StringBuilder insertSQL = new StringBuilder("insert into Client (cli_nom, cli_prenom, cli_adresse, cli_codepostal, " +
+        StringBuilder insertSQL = new StringBuilder("insert into Client (cli_nom, cli_prenom, cli_adresse, cli_code_postal, " +
                 "cli_ville, cli_email) values (?,?,?,?,?,?)");
         try {
             Connection con = BDDservice.getInstance().getConnection();
@@ -22,6 +22,7 @@ public class ClientDAO extends DAOgenerale<Client> {
             pstmt.setString(4, obj.getCodePostal());
             pstmt.setString(5, obj.getVille());
             pstmt.setString(6, obj.getEmail());
+
 
             pstmt.executeUpdate();
 
@@ -41,7 +42,7 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public String update(Client obj, Integer pId) {
-        StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_codepostal=?," +
+        StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_code_postal=?," +
                 "cli_ville=?, cli_email=? where cli_id = ?");
         try {
             Connection con = BDDservice.getInstance().getConnection();
@@ -84,7 +85,6 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public Client find(Integer pId) {
-        Client client = new Client("a", "a", "1a", "00001", "A", "aa@aa.aa");
 
         StringBuilder selectById = new StringBuilder("select * from client where cli_id=?");
 
@@ -94,17 +94,27 @@ public class ClientDAO extends DAOgenerale<Client> {
             pstmt.setInt(1,pId);
             ResultSet resultSet = pstmt.executeQuery();
 
-            while(resultSet.next()) {
-                client.setNom(resultSet.getString("Cli_nom"));
-                client.setPrenom(resultSet.getString("Cli_prenom"));
-                client.setAdresse(resultSet.getString("Cli_Adresse"));
-                client.setCodePostal(resultSet.getString("Cli_Code_Postal"));
-                client.setVille(resultSet.getString("Cli_Ville"));
-                client.setEmail(resultSet.getString("Cli_Email"));
-            }
+            Client client = null;
 
+            while(resultSet.next()) {
+                client = new Client(
+                resultSet.getString("Cli_nom"),
+                resultSet.getString("Cli_prenom"),
+                resultSet.getString("Cli_Adresse"),
+                resultSet.getString("Cli_Code_Postal"),
+                resultSet.getString("Cli_Ville"),
+                resultSet.getString("Cli_Email")
+                );
+            }
             BDDservice.getInstance().closeConnection();
+
+            if (client == null) {
+                throw new SQLException("Ce client n'existe pas");
+            }
+            // TODO : page erreur inexistence du client
+
             return client;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -121,14 +131,15 @@ public class ClientDAO extends DAOgenerale<Client> {
             ResultSet resultSet = stmt.executeQuery(selectSQL);
 
             while(resultSet.next()) {
-                Client client = new Client("a", "a", "1a", "00001", "A", "aa@aa.aa");
-
-                client.setNom(resultSet.getString("Cli_nom"));
-                client.setPrenom(resultSet.getString("Cli_prenom"));
-                client.setAdresse(resultSet.getString("Cli_Adresse"));
-                client.setCodePostal(resultSet.getString("Cli_Code_Postal"));
-                client.setVille(resultSet.getString("Cli_Ville"));
-                client.setEmail(resultSet.getString("Cli_Email"));
+                Client client = new Client(
+                resultSet.getString("Cli_nom"),
+                resultSet.getString("Cli_prenom"),
+                resultSet.getString("Cli_Adresse"),
+                resultSet.getString("Cli_Code_Postal"),
+                resultSet.getString("Cli_Ville"),
+                resultSet.getString("Cli_Email")
+                );
+                client.setId(resultSet.getInt("cli_id"));
 
                 listCli.add(client);
             }

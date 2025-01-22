@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 public class Client {
 
+	private Integer id;
 	private String nom;
 	private String prenom;
 	private String adresse;
@@ -16,6 +17,16 @@ public class Client {
 	private final String regexCodePostal = "^[0-9]{2}\\s?[0-9]{3}$";
 	private final String regexVille = "^[a-zA-Zà-üÀ-Üß]+([\\s-][a-zA-Zà-üÀ-Üß]+)*$";
 	private final String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+
+	public void setId(Integer id) throws IllegalArgumentException {
+		if (id==null || id < -1) {
+			throw new IllegalArgumentException();
+		}
+		this.id=id;
+	}
+	public Integer getId() {
+		return this.id;
+	}
 
 	public void setNom(String nom) throws InputMismatchException {
 		if (!nom.matches(regexNom)) {
@@ -77,7 +88,7 @@ public class Client {
 		return this.email;
 	}
 
-	public String toString(String param) {
+	public String toString() {
 		return("Nom : "+this.prenom+" "+this.nom+"<br/>"+"Adresse : "+this.adresse+", "+this.codePostal+" "+this.ville+
 		"<br/>"+"Contact : "+this.email);
 	}

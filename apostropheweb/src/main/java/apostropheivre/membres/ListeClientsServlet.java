@@ -15,15 +15,39 @@ import java.io.IOException;
 public class ListeClientsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    try {
-        ClientDAO cld = new ClientDAO();
-
-        request.setAttribute("Liste_Clients", cld.findAll());
-        request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_clients.jsp");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
-        dispatcher.forward(request, response);
-    } catch (ServletException e) {
-        Log.error(e.getMessage(), e);
+        try {
+            request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_clients.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            Log.error(e.getMessage(), e);
+        }
     }
-}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("id", request.getParameter("idSup"));
+        if (request.getAttribute("id") != null) {
+            doDelete(request, response);
+
+            try {
+                ClientDAO cld = new ClientDAO();
+
+                request.setAttribute("Liste_Clients", cld.findAll());
+                request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_clients.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
+                dispatcher.forward(request, response);
+            } catch (ServletException e) {
+                Log.error(e.getMessage(), e);
+            }
+        }
+    }
+
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            ClientDAO cld = new ClientDAO();
+            cld.delete(Integer.parseInt((String) request.getAttribute("id")));
+        } catch (Exception e){
+            Log.error(e.getMessage(), e);
+        }
+    }
 }
