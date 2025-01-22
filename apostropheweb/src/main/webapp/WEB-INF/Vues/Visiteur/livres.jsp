@@ -43,7 +43,7 @@
                         <a href="${pageContext.request.contextPath}/modifier-livre?isbn=${livre.isbn}">
                             Modifier
                         </a>
-
+                        <a href="${pageContext.request.contextPath}/livres/details?id=${livre.id}">/livres/details?id=${livre.id}</a><br><br>
                         <!-- Bouton Supprimer avec confirmation -->
                         <form action="${pageContext.request.contextPath}/supprimer-livre"
                               method="POST"

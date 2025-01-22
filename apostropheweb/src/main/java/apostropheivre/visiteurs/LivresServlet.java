@@ -29,10 +29,10 @@ public class LivresServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            Connection connection = bddService.getConnection();
-            livreDAO = new LivreDAO(connection);
-            auteurDAO = new AuteurDAO();
-            categorieDAO = new CategorieDAO(connection);
+//            Connection connection = bddService.getConnection();
+//            livreDAO = new LivreDAO(connection);
+//            auteurDAO = new AuteurDAO();
+//            categorieDAO = new CategorieDAO(connection);
         } catch (Exception e) {
             throw new ServletException("Erreur d'initialisation de la connexion à la base de données", e);
         }
@@ -46,7 +46,10 @@ public class LivresServlet extends HttpServlet {
         String uri = request.getRequestURI();
         String pathInfo = uri.substring(contextPath.length());
 
-
+        Connection connection = bddService.getConnection();
+        livreDAO = new LivreDAO(connection);
+        auteurDAO = new AuteurDAO();
+        categorieDAO = new CategorieDAO(connection);
         try {
             if (pathInfo.equals("/livres")) {
                 // Liste des livres avec recherche optionnelle
