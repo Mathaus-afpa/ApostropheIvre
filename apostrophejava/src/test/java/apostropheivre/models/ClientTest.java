@@ -24,83 +24,83 @@ class ClientTest {
     void setNdfNullAssertFalse() {
 
         try {
-            cliTest.setNdf(null);
+            cliTest.setNom(null);
         } catch (Exception e) {}
-        assertFalse((cliTest.getNdf() == null));
+        assertFalse((cliTest.getNom() == null));
     }
 
     @Test
     void setNdfLettresAssertTrue() {
 
         try {
-            cliTest.setNdf("NdfTest");
+            cliTest.setNom("NdfTest");
         } catch (Exception e) {}
-        assertEquals("NdfTest", cliTest.getNdf());
+        assertEquals("NdfTest", cliTest.getNom());
     }
 
     @Test
     void setNdfNdfCharabiaAssertTrue() {
         try {
-            cliTest.setNdf("NdféûÄñ");
+            cliTest.setNom("NdféûÄñ");
         } catch (Exception e) {}
-        assertEquals("NdféûÄñ", cliTest.getNdf());
+        assertEquals("NdféûÄñ", cliTest.getNom());
     }
 
     @Test
     void setNdfChiffreAssertFalse() {
         try {
-            cliTest.setNdf("Ndf4");
+            cliTest.setNom("Ndf4");
         } catch (Exception e) {}
-        assertNotEquals("Ndf4", cliTest.getNdf());
+        assertNotEquals("Ndf4", cliTest.getNom());
     }
 
     @Test
     void setNdfVideAssertFalse() {
 
         try {
-            cliTest.setNdf("");
+            cliTest.setNom("");
         } catch (Exception e) {}
-        assertNotEquals("", cliTest.getNdf());
+        assertNotEquals("", cliTest.getNom());
     }
 
     @Test
     void setNdfEspaceAssertFalse() {
         try {
-            cliTest.setNdf(" ");
+            cliTest.setNom(" ");
         } catch (Exception e) {}
-        assertNotEquals(" ", cliTest.getNdf());
+        assertNotEquals(" ", cliTest.getNom());
     }
 
     @Test
     void setNdfTiretAssertFalse() {
         try {
-            cliTest.setNdf("-");
+            cliTest.setNom("-");
         } catch (Exception e) {}
-        assertNotEquals("-", cliTest.getNdf());
+        assertNotEquals("-", cliTest.getNom());
     }
 
     @Test
     void setNdfLettresPuisEspaceAssertFalse() {
         try {
-            cliTest.setNdf(("Test "));
+            cliTest.setNom(("Test "));
         } catch (Exception e) {}
-        assertNotEquals("Test ", cliTest.getNdf());
+        assertNotEquals("Test ", cliTest.getNom());
     }
 
     @Test
     void setNdfLettresPuisTiretAssertFalse() {
         try {
-            cliTest.setNdf(("Test-"));
+            cliTest.setNom(("Test-"));
         } catch (Exception e) {}
-        assertNotEquals("Test-", cliTest.getNdf());
+        assertNotEquals("Test-", cliTest.getNom());
     }
 
     @Test
     void setNdfNdfComposeAssertTrue() {
         try {
-            cliTest.setNdf(("Ndf-Composé du Test"));
+            cliTest.setNom(("Ndf-Composé du Test"));
         } catch (Exception e) {}
-        assertEquals("Ndf-Composé du Test", cliTest.getNdf());
+        assertEquals("Ndf-Composé du Test", cliTest.getNom());
     }
 
     // ----------- TESTS PRENOM ---------------------------------

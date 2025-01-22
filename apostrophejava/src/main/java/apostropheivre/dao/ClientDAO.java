@@ -3,6 +3,7 @@ package apostropheivre.dao;
 import apostropheivre.models.Client;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,17 +11,18 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public int create(Client obj) {
-        StringBuilder insertSQL = new StringBuilder("insert into Client (cli_nom, cli_prenom, cli_adresse, cli_codepostal, " +
+        StringBuilder insertSQL = new StringBuilder("insert into Client (cli_nom, cli_prenom, cli_adresse, cli_code_postal, " +
                 "cli_ville, cli_email) values (?,?,?,?,?,?)");
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(insertSQL.toString(),PreparedStatement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, obj.getNdf());
+            pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
             pstmt.setString(4, obj.getCodePostal());
             pstmt.setString(5, obj.getVille());
             pstmt.setString(6, obj.getEmail());
+
 
             pstmt.executeUpdate();
 
@@ -40,12 +42,12 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public String update(Client obj, Integer pId) {
-        StringBuilder updateSQL = new StringBuilder("update Client set cli_ndf=?, cli_prenom=?, cli_Adresse=?, cli_codepostal=?," +
+        StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_code_postal=?," +
                 "cli_ville=?, cli_email=? where cli_id = ?");
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
-            pstmt.setString(1, obj.getNdf());
+            pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
             pstmt.setString(4, obj.getCodePostal());
@@ -83,7 +85,6 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public Client find(Integer pId) {
-        Client client = new Client(null, null, null, null, null, null);
 
         StringBuilder selectById = new StringBuilder("select * from client where cli_id=?");
 
@@ -93,17 +94,27 @@ public class ClientDAO extends DAOgenerale<Client> {
             pstmt.setInt(1,pId);
             ResultSet resultSet = pstmt.executeQuery();
 
-            while(resultSet.next()) {
-                client.setNdf(resultSet.getString("Cli_ndf"));
-                client.setPrenom(resultSet.getString("Cli_prenom"));
-                client.setAdresse(resultSet.getString("Cli_Adresse"));
-                client.setCodePostal(resultSet.getString("Cli_CodePostal"));
-                client.setVille(resultSet.getString("Cli_Ville"));
-                client.setEmail(resultSet.getString("Cli_Email"));
-            }
+            Client client = null;
 
+            while(resultSet.next()) {
+                client = new Client(
+                resultSet.getString("Cli_nom"),
+                resultSet.getString("Cli_prenom"),
+                resultSet.getString("Cli_Adresse"),
+                resultSet.getString("Cli_Code_Postal"),
+                resultSet.getString("Cli_Ville"),
+                resultSet.getString("Cli_Email")
+                );
+            }
             BDDservice.getInstance().closeConnection();
+
+            if (client == null) {
+                throw new SQLException("Ce client n'existe pas");
+            }
+            // TODO : page erreur inexistence du client
+
             return client;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -111,8 +122,8 @@ public class ClientDAO extends DAOgenerale<Client> {
 
     @Override
     public List findAll() {
-        String selectSQL = "select id_Client from client";
-        List<Client> listCli = Arrays.asList();
+        String selectSQL = "select * from client";
+        List<Client> listCli = new ArrayList<>();
 
         try {
             Connection con = BDDservice.getInstance().getConnection();
@@ -120,7 +131,17 @@ public class ClientDAO extends DAOgenerale<Client> {
             ResultSet resultSet = stmt.executeQuery(selectSQL);
 
             while(resultSet.next()) {
-                listCli.add(find(resultSet.getInt("id_Client")));
+                Client client = new Client(
+                resultSet.getString("Cli_nom"),
+                resultSet.getString("Cli_prenom"),
+                resultSet.getString("Cli_Adresse"),
+                resultSet.getString("Cli_Code_Postal"),
+                resultSet.getString("Cli_Ville"),
+                resultSet.getString("Cli_Email")
+                );
+                client.setId(resultSet.getInt("cli_id"));
+
+                listCli.add(client);
             }
 
             BDDservice.getInstance().closeConnection();
