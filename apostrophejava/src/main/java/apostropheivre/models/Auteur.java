@@ -1,28 +1,54 @@
 package apostropheivre.models;
+
+import org.json.JSONObject;
+
 public class Auteur {
+	public Auteur() {}
+	private String nom;
+	private String prenom;
+	private String url;
+	private Integer id;
 
-	private String aut_nom;
-	private Byte aut_photo;
-
-	public Auteur(Integer aut_id, String aut_nom, Byte aut_photo) {
-		setAut_nom(aut_nom);
-		setAut_photo(aut_photo);
+	public String getNom() {
+		return nom;
 	}
 
-	public String getAut_nom() {
-		return aut_nom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public void setAut_nom(String aut_nom) {
-		this.aut_nom = aut_nom;
+	public String getPrenom() {
+		return prenom;
 	}
 
-	public Byte getAut_photo() {
-		return aut_photo;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
-	public void setAut_photo(Byte aut_photo) {
-		this.aut_photo = aut_photo;
+	public String getUrl() {
+		return url;
 	}
 
+	public void setUrl(String url) {
+		this.url = "../Images/auteurs/" + url;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return this.getNom() + " " + this.getPrenom();
+	}
+
+	public String toJson() {
+		JSONObject json = new JSONObject(this);
+		// Retourne la chaîne JSON
+		return json.toString();
+	}
 }

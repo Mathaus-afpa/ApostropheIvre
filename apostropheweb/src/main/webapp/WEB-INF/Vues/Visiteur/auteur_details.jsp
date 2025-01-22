@@ -1,3 +1,0 @@
-<div>
-    AUTEUR DETAIL
-</div>
