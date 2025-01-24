@@ -1,6 +1,5 @@
 package apostropheivre.visiteurs;
-import apostropheivre.dao.AuteurDAO;
-import apostropheivre.models.Auteur;
+import apostropheivre.auteur.Auteur;
 import apostropheivre.utils.Json;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
@@ -12,12 +11,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import static apostropheivre.ApostropheIvrePages.APP;
 import static apostropheivre.ApostropheIvrePages.AUTEUR_DETAIL;
+import apostropheivre.auteur.AuteurDAO;
 @WebServlet("/auteur/details")
 public class AuteurDetailsServlet extends HttpServlet {
     //<editor-fold defaultstate="expanded" desc="POST / CREATE">
     private static void CreerAuteur(String json) throws IOException {
         try {
-            new AuteurDAO().create(json);
+            AuteurDAO.creerAuteur(json);
         } catch (Exception e) {
             Log.error(e.getMessage(), e.getCause());
             throw new IOException("POST /auteur/details CreerAuteur " + json);
@@ -31,7 +31,7 @@ public class AuteurDetailsServlet extends HttpServlet {
     //<editor-fold defaultstate="expanded" desc="GET / READ">
     private static Auteur RecupererAuteur(String id) throws IOException {
         try {
-            return (Auteur) new AuteurDAO().find(Integer.parseInt(id));
+            return AuteurDAO.recupererAuteur(Integer.parseInt(id));
         } catch (Exception e) {
             throw new IOException("GET /auteur/details RecupererAuteur " + id);
         }
@@ -54,7 +54,7 @@ public class AuteurDetailsServlet extends HttpServlet {
     //<editor-fold defaultstate="expanded" desc="PUT / UPDATE">
     private static void ModifierAuteur(String json) throws IOException {
         try {
-            new AuteurDAO().update(json, 0);
+            AuteurDAO.mettreAJourAuteur(json);
         } catch (Exception e) {
             throw new IOException("PUT /auteur/details ModifierAuteur " + json);
         }
@@ -67,7 +67,7 @@ public class AuteurDetailsServlet extends HttpServlet {
     //<editor-fold defaultstate="expanded" desc="DELETE / DELETE">
     private static void SupprimerAuteur(String id) throws IOException {
         try {
-            new AuteurDAO().delete(Integer.parseInt(id));
+            AuteurDAO.supprimerAuteur(Integer.parseInt(id));
         } catch (Exception e) {
             throw new IOException("DELETE /auteur/details SupprimerAuteur " + id);
         }

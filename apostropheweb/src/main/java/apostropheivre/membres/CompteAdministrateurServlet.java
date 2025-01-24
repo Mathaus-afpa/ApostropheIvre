@@ -1,6 +1,4 @@
 package apostropheivre.membres;
-import apostropheivre.models.Auteur;
-import apostropheivre.models.Livre;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/administrateur")
 public class CompteAdministrateurServlet extends HttpServlet {

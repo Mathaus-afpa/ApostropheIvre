@@ -1,39 +1,39 @@
-<div id="modalAuteur" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 1em; z-index: 1000;">
-    <form id="formulaireAuteur" action="${pageContext.request.contextPath}/auteur/details" method="post">
-        <jsp:include page="/WEB-INF/Vues/Visiteur/Auteurs/auteur_details.jsp" />
+<div id="modalCategorie" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 1em; z-index: 1000;">
+    <form id="formulaireCategorie" action="${pageContext.request.contextPath}/Categorie/details" method="post">
+        <jsp:include page="/WEB-INF/Vues/Visiteur/Categories/Categorie_details.jsp" />
         <div><input type="file" id="url" name="url"></div>
         <div><input id="valider" type="submit" value="Valider"></div>
     </form>
-    <button id="fermerModalAuteur">Annuler</button>
+    <button id="fermerModalCategorie">Annuler</button>
 </div>
 <script>
     /**
-     * Script pour la gestion de formulaire d'auteur, du modal et des opérations d'édition et suppression.
+     * Script pour la gestion de formulaire d'Categorie, du modal et des opérations d'édition et suppression.
      * - Gère la soumission du formulaire avec des méthodes PUT ou POST selon la présence d'un ID.
      * - Ferme le modal lorsqu'un bouton est cliqué.
-     * - Permet d'éditer un auteur et de pré-remplir le formulaire avec ses données.
-     * - Permet de supprimer un auteur après confirmation.
+     * - Permet d'éditer un Categorie et de pré-remplir le formulaire avec ses données.
+     * - Permet de supprimer un Categorie après confirmation.
      */
-    // Sélection des éléments du DOM
-    const fermerModalAuteur = document.getElementById('fermerModalAuteur');
-    const modalAuteur = document.getElementById('modalAuteur');
-    const formulaireAuteur = document.getElementById('formulaireAuteur');
-    const urlAuteur = '${pageContext.request.contextPath}/auteur/details';
+        // Sélection des éléments du DOM
+    const fermerModalCategorie = document.getElementById('fermerModalCategorie');
+    const modalCategorie = document.getElementById('modalCategorie');
+    const formulaireCategorie = document.getElementById('formulaireCategorie');
+    const urlCategorie = '${pageContext.request.contextPath}/Categorie/details';
     // Fonction pour fermer le modal
-    fermerModalAuteur?.addEventListener('click', () => {
-        if (modalAuteur) {
-            modalAuteur.style.display = 'none';
+    fermerModalCategorie?.addEventListener('click', () => {
+        if (modalCategorie) {
+            modalCategorie.style.display = 'none';
         }
     });
     // Fonction pour soumettre le formulaire
-    formulaireAuteur?.addEventListener('submit', function (event) {
+    formulaireCategorie?.addEventListener('submit', function (event) {
         event.preventDefault(); // Empêche la soumission par défaut du formulaire
         // Crée un objet JSON à partir du formulaire
-        const formData = new FormData(formulaireAuteur);
+        const formData = new FormData(formulaireCategorie);
         const jsonObject = {
-            "id" : formData.get("idAuteur"),
-            "nom" : formData.get("nomAuteur"),
-            "prenom" : formData.get("prenomAuteur"),
+            "id" : formData.get("idCategorie"),
+            "nom" : formData.get("nomCategorie"),
+            "prenom" : formData.get("prenomCategorie"),
             "url" : formData.get("url")
         };
         formData.forEach((value, key) => {
@@ -49,7 +49,7 @@
             body: JSON.stringify(jsonObject)
         };
         // Envoi de la requête avec fetch
-        fetch(urlAuteur, fetchOptions)
+        fetch(urlCategorie, fetchOptions)
             .then(response => {
                 if (!response.ok) { throw new Error(`Erreur HTTP : ${response.status}`); }
                 return response.text();
@@ -62,24 +62,24 @@
                 console.error('Erreur lors de la requête :', error);
             });
     });
-    // Fonction pour éditer un auteur
+    // Fonction pour éditer un Categorie
     function edit(element) {
-        const modal = document.getElementById("modalAuteur");
+        const modal = document.getElementById("modalCategorie");
         const data = JSON.parse(element.getAttribute('data-json'));
-        const form = document.getElementById('formulaireAuteur');
+        const form = document.getElementById('formulaireCategorie');
         if (modal && form) {
             modal.style.display = "block";
-            form.querySelector(`[name="idAuteur"]`).value = data.id;
-            form.querySelector(`[name="nomAuteur"]`).value = data.nom;
-            form.querySelector(`[name="prenomAuteur"]`).value = data.prenom;
+            form.querySelector(`[name="idCategorie"]`).value = data.id;
+            form.querySelector(`[name="nomCategorie"]`).value = data.nom;
+            form.querySelector(`[name="prenomCategorie"]`).value = data.prenom;
             form.querySelector(`[name="url"]`).value = "";
         }
     }
-    // Fonction pour supprimer un auteur
+    // Fonction pour supprimer un Categorie
     function remove(id) {
         const confirmation = confirm("Are you sure you want to delete?");
         if (confirmation) {
-            fetch(urlAuteur + `?id=` + id, {
+            fetch(urlCategorie + `?id=` + id, {
                 method: 'DELETE'
             })
                 .then(response => {

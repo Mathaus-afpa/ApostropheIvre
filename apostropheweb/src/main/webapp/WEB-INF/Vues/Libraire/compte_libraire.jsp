@@ -32,6 +32,7 @@
             </table>
         </div>
         <div style="width: 100%;height: 200px; overflow-y: scroll;">
+            <jsp:include page="./Categories/categories.jsp"></jsp:include>
         </div>
     </div>
     <div style="width: 25%; margin-right: 5px;">

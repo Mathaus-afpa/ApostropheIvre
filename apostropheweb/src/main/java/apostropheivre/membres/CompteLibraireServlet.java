@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static apostropheivre.ApostropheIvre.AUTEURS;
+import static apostropheivre.ApostropheIvre.CATEGORIES;
 import static apostropheivre.ApostropheIvrePages.APP;
 import static apostropheivre.ApostropheIvrePages.LIBRAIRE_DASHBOARD;
 
@@ -21,7 +22,7 @@ public class CompteLibraireServlet extends HttpServlet {
         try {
             request.setAttribute("auteurs", AUTEURS);
             request.setAttribute("livres", new ArrayList<>());
-            request.setAttribute("categories", new ArrayList<>());
+            request.setAttribute("categories", CATEGORIES);
             request.setAttribute("clients", new ArrayList<>());
             request.setAttribute("page", LIBRAIRE_DASHBOARD);
             request.setAttribute("edit", true);

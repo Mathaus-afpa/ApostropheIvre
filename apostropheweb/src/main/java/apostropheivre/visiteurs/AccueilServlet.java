@@ -1,10 +1,10 @@
 package apostropheivre.visiteurs;
 
 import apostropheivre.ApostropheIvre;
-import apostropheivre.dao.AuteurDAO;
+import apostropheivre.auteur.AuteurDAO;
+import apostropheivre.categorie.CategorieDAO;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,12 +15,14 @@ import java.io.IOException;
 
 @WebServlet("/accueil")
 public class AccueilServlet extends HttpServlet {
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        ApostropheIvre.AUTEURS = new AuteurDAO().findAll();
+    static {
+        AuteurDAO.setForcerRequete(true);
+        ApostropheIvre.AUTEURS = AuteurDAO.listerAuteurs();
+        AuteurDAO.setForcerRequete(false);
+        CategorieDAO.setForcerRequete(true);
+        ApostropheIvre.CATEGORIES = CategorieDAO.listerCategories();
+        CategorieDAO.setForcerRequete(false);
     }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             request.setAttribute("page", "/WEB-INF/Vues/Visiteur/accueil.jsp");
