@@ -4,7 +4,9 @@ import apostropheivre.UserDatabase;
 import apostropheivre.compte.Compte;
 import apostropheivre.compte.CompteDAO;
 import apostropheivre.dao.DAOcompte;
+import apostropheivre.services.EmailService;
 import apostropheivre.utils.Log;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -111,6 +113,14 @@ public class ConnexionServlet extends HttpServlet {
 
             // Appel au DAO pour créer le compte
             Compte nouveauCompte = CompteDAO.creerCompte(jsonCompte.toString());
+
+            try {
+                // Appel de l'envoi d'e-mail simple
+                EmailService.envoyerEmailSimple(nouveauCompte.getMail());
+                Log.info("E-mail envoyé avec succès à " + nouveauCompte.getMail());
+            } catch (MessagingException e) {
+                Log.error("Erreur lors de l'envoi de l'e-mail : " + e.getMessage(), e);
+            }
 
             if (nouveauCompte != null && nouveauCompte.getId() > 0) {
                 Log.info("Compte créé avec succès, ID généré : " + nouveauCompte.getId());
