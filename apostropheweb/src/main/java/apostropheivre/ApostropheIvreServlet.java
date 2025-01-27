@@ -1,39 +1,45 @@
 package apostropheivre;
-
 import java.io.*;
-
-import apostropheivre.models.*;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet("/")
 public class ApostropheIvreServlet extends HttpServlet {
-    private String message;
-    public void init() {
-        Abonne abonne = new Abonne();
-        Auteur auteur = new Auteur();
-        Compte compte = new Compte();
-        Emprunt emprunt = new Emprunt();
-        Libraire libraire = new Libraire();
-        Livre livre = new Livre();
-        message = ApostropheIvre.HelloWorld();
-        message += "<br>" + abonne.toString();
-        message += "<br>" + auteur.toString();
-        message += "<br>" + compte.toString();
-        message += "<br>" + emprunt.toString();
-        message += "<br>" + libraire.toString();
-        message += "<br>" + livre.toString();
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
-    }
-
-    public void destroy() {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Récupérer la route
+        String path = request.getRequestURI().substring(request.getContextPath().length());
+        if (path.equals("/")) {
+            response.sendRedirect("./accueil");
+        } else {
+        // Le chemin vers le fichier dans le système de fichiers
+        String filePath = getServletContext().getRealPath(path);
+        File file = new File(filePath);
+        if (file.exists() && !file.isDirectory()) {
+            // Déterminer le type MIME du fichier en fonction de son extension
+            String mimeType = getServletContext().getMimeType(file.getName());
+            // Si le type MIME n'est pas trouvé, on utilise "application/octet-stream" par défaut
+            if (mimeType == null) {
+                mimeType = "application/octet-stream";
+            }
+            // Définir le type MIME dans la réponse
+            response.setContentType(mimeType);
+            // Définir la taille du fichier
+            response.setContentLength((int) file.length());
+            // Ouvrir le fichier et l'envoyer dans le flux de sortie de la réponse HTTP
+            try (FileInputStream fileInputStream = new FileInputStream(file);
+                 OutputStream outputStream = response.getOutputStream()) {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                outputStream.flush();
+            }
+        } else {
+            // Si le fichier n'est pas trouvé, renvoyer une erreur 404
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Fichier non trouvé");
+        }
+        }
     }
 }
