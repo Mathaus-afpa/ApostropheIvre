@@ -1,4 +1,7 @@
 package apostropheivre.visiteurs;
+
+import apostropheivre.dao.DAOcompte;
+import apostropheivre.models.Compte;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -6,7 +9,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
+
 @WebServlet("/inscription")
 public class InscriptionServlet extends HttpServlet {
     @Override
@@ -19,4 +24,7 @@ public class InscriptionServlet extends HttpServlet {
             Log.error(e.getMessage(), e);
         }
     }
+
 }
+
+

@@ -40,3 +40,5 @@ build/
 
 **/**.properties
 **/**.log
+
+UserDatabase.java

@@ -1,19 +1,143 @@
-<form action="./inscription" method="POST">
-    <label for="username">Nom d'utilisateur :</label>
-    <input type="text" id="username" name="username" required>
-    <br><br>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-    <label for="email">Adresse e-mail :</label>
-    <input type="email" id="email" name="email" required>
-    <br><br>
+<%--<form action="./inscription" method="POST">--%>
+<%--    <label for="username">Nom d'utilisateur :</label>--%>
+<%--    <input type="text" id="username" name="username" required>--%>
+<%--    <br><br>--%>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password" required>
-    <br><br>
+<%--    <label for="email">Adresse e-mail :</label>--%>
+<%--    <input type="email" id="email" name="email" required>--%>
+<%--    <br><br>--%>
 
-    <label for="confirm-password">Confirmer le mot de passe :</label>
-    <input type="password" id="confirm-password" name="confirm-password" required>
-    <br><br>
+<%--    <label for="password">Mot de passe :</label>--%>
+<%--    <input type="password" id="password" name="password" required>--%>
+<%--    <br><br>--%>
 
-    <button type="submit">S'inscrire</button>
-</form>
+<%--    <label for="confirm-password">Confirmer le mot de passe :</label>--%>
+<%--    <input type="password" id="confirm-password" name="confirm-password" required>--%>
+<%--    <br><br>--%>
+
+<%--    <button type="submit">S'inscrire</button>--%>
+<%--</form>--%>
+
+
+<% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+<% String successMessage = (String) request.getAttribute("successMessage"); %>
+
+<div>
+    <% if (errorMessage != null) { %>
+    <p class="text-red-500 text-sm"><%= errorMessage %></p>
+    <% } else if (successMessage != null) { %>
+    <p class="text-green-500 text-sm"><%= successMessage %></p>
+    <% } %>
+</div>
+
+
+<div
+        class="grid md:grid-cols-3 w-[57rem] mt-56 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
+    <div class="max-md:order-1 flex flex-col justify-center md:space-y-16 space-y-8 max-md:mt-16 min-h-full bg-gradient-to-r from-gray-900 to-gray-700 lg:px-8 px-4 py-4">
+        <div>
+            <h4 class="text-white text-lg">remplir avec un truc ici</h4>
+<%--            <p class="text-[13px] text-gray-300 mt-3 leading-relaxed"></p>--%>
+        </div>
+        <div>
+            <h4 class="text-white text-lg">on verra plus tard</h4>
+<%--            <p class="text-[13px] text-gray-300 mt-3 leading-relaxed"></p>--%>
+        </div>
+    </div>
+
+    <form action="./connexion" method="POST" class="md:col-span-2 w-full py-6 px-6 sm:px-16 max-md:max-w-xl mx-auto" >
+
+        <input type="hidden" name="action" value="register">
+
+        <div class="mb-6">
+            <h3 class="text-gray-800 text-xl font-bold">Nouveau membre</h3>
+        </div>
+
+        <div class="space-y-6">
+
+            <div>
+
+                <label class="text-gray-600 text-sm mb-2 block" for="login">Identifiant</label>
+
+                <div class="relative flex items-center">
+                    <input name="login" id="login" type="text" required
+                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer identifiant" />
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" class="w-6 h-6 absolute right-4"
+                         viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80Zm-360-80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0-80Zm0 400Z"/>
+                    </svg>
+                </div>
+
+            </div>
+
+            <div>
+
+                <label class="text-gray-600 text-sm mb-2 block">Email</label>
+                <div class="relative flex items-center">
+                    <input name="mail" id="mail" type="email" required
+                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer email" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 682.667 682.667">
+                        <defs>
+                            <clipPath id="a" clipPathUnits="userSpaceOnUse">
+                                <path d="M0 512h512V0H0Z" data-original="#000000"></path>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
+                            <path fill="none" stroke-miterlimit="10" stroke-width="40" d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z" data-original="#000000"></path>
+                            <path d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z" data-original="#000000"></path>
+                        </g>
+                    </svg>
+
+                </div>
+            </div>
+
+            <div>
+                <label class="text-gray-600 text-sm mb-2 block">Mot de passe</label>
+                <div class="relative flex items-center">
+                    <input name="password" id="password" type="password" required
+                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer mot de passe" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                        <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex items-center">
+
+                <div class="inline-flex items-center">
+
+                    <label class="flex items-center cursor-pointer relative">
+
+                        <input defaultChecked id="remember-me" name="remember-me" type="checkbox"
+                               class="peer h-6 w-6 cursor-pointer transition-all appearance-none rounded-full bg-slate-100 shadow hover:shadow-md border border-slate-300 checked:bg-green-500 checked:border-green-500" id="check-custom-style" />
+
+                        <span class="absolute text-slate-800 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                        </span>
+
+                    </label>
+
+                </div>
+                <label for="remember-me" class="ml-1 pt-1 block text-sm text-gray-600">
+                    J'accepte les termes et les conditions.<a href="#"
+                               class="font-bold text-gray-700 tracking-wider hover:text-green-600 hover:underline hover:underline-offset-2 ml-1 ease-out duration-300">Termes
+                    et Conditions</a>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="mt-8">
+            <button
+                    class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-500 hover:bg-lime-400 focus:outline-none ease-out duration-300"
+                    type="submit"
+            >
+                Créer compte
+            </button>
+        </div>
+        <p class="text-gray-600 text-sm mt-6 text-center">Déjà membre ? <a href="#"
+                                                                class="font-bold text-gray-700 tracking-wider hover:text-green-600 hover:underline hover:underline-offset-2 ease-in-out duration-300">Se connecter</a></p>
+    </form>
+</div>

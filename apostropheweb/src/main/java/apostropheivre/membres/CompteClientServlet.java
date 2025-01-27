@@ -1,5 +1,6 @@
 package apostropheivre.membres;
 
+import apostropheivre.UserDatabase;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/client")
 public class CompteClientServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
@@ -22,4 +24,6 @@ public class CompteClientServlet extends HttpServlet {
             Log.error(e.getMessage(), e);
         }
     }
+
 }
+
