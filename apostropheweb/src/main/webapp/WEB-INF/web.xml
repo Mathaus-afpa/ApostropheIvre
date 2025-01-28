@@ -3,4 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+    <servlet>
+        <servlet-name>Servlet404</servlet-name>
+        <servlet-class>Servlet404</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Servlet404</servlet-name>
+        <url-pattern>/erreur</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erreur</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/erreur</location>
+    </error-page>
+
 </web-app>
+

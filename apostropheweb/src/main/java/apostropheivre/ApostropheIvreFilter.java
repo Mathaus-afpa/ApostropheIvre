@@ -15,8 +15,9 @@ public class ApostropheIvreFilter implements Filter {
 	// Pages accessibles par les utilisateurs standards
 
 	public static final List<String> PAGES_VISITEUR = Arrays.asList("/", "/accueil", "/inscription",
-			"/gestion", "/gestion/clients", "/gestion/clients/details", "/gestion/clients/inscription",
-			"/livres/*", "/modifier-livre", "/ajouter-livre", "/connexion", "/livres", "/livre/details", "/auteurs", "/auteur/details");
+			"/gestion", "/gestion/clients", "/gestion/clients/details", "/gestion/clients/inscription", "/modifier", "/supprimer",
+			"/livres/*", "/modifier-livre", "/ajouter-livre", "/connexion", "/livres", "/livre/details", "/auteurs", "/auteur/details",
+			"/erreur");
 	public static final List<String> PAGES_CLIENT = Arrays.asList("/client");
 	public static final List<String> PAGES_LIBRAIRE = Arrays.asList("/libraire", "/client");
 	public static final List<String> PAGES_ADMIN = Arrays.asList("/administrateur", "/libraire", "/client");
