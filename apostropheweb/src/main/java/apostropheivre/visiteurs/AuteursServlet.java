@@ -1,8 +1,9 @@
 package apostropheivre.visiteurs;
-import apostropheivre.auteur.AuteurDAO;
+
+import apostropheivre.Cache;
+import apostropheivre.libraire.auteur.AuteurDAO;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ public class AuteursServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("auteurs", AuteurDAO.listerAuteurs());
+            request.setAttribute("auteurs", Cache.listerAuteurs());
             request.setAttribute("page", LISTE_AUTEUR);
             request.setAttribute("edit", false);
             RequestDispatcher dispatcher = request.getRequestDispatcher(APP);

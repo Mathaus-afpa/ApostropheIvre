@@ -13,7 +13,7 @@ public class Categorie {
 	public static final String JSON_LIBELLE = "libelle";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs JSON">
-	private static final String REGEX_LIBELLE = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
+	private static final String REGEX_LIBELLE = "^[A-ZÀ-ÖØ-Ý-a-zà-öø-ÿ\\-\\.\\s&']{1,49}$";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs prive">
 	private Integer id;

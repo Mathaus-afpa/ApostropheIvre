@@ -115,7 +115,7 @@ public class Livre {
 		return Pattern.matches(REGEX_TITRE, livre.getTitre())
 				&& Pattern.matches(REGEX_RESUME, livre.getResume())
 				&& Pattern.matches(REGEX_IMAGE, livre.getImage())
-				&& Pattern.matches(REGEX_ISBN, livre.getImage())
+				&& Pattern.matches(REGEX_ISBN, livre.getIsbn())
 				&& 0 <= livre.getQuantite()
 				&& livre.getCategorie() != null
 				&& livre.getAuteur() != null;

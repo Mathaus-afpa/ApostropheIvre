@@ -9,11 +9,14 @@ import java.sql.SQLException;
 public class LivreRequetes {
 	private LivreRequetes() {}
 	//<editor-fold defaultstate="expanded" desc="Champs BDD">
-	public final static String CHAMPS_ID = "id";
-	public final static String CHAMPS_MAIL = "mail";
-	public final static String CHAMPS_LOGIN = "login";
-	public final static String CHAMPS_PASSWORD = "password";
-	public final static String CHAMPS_ROLE = "role";
+	public final static String CHAMPS_ID = "liv_id";
+	public final static String CHAMPS_TITRE = "liv_titre";
+	public final static String CHAMPS_RESUME = "liv_resume";
+	public final static String CHAMPS_IMAGE = "liv_image";
+	public final static String CHAMPS_ISBN = "liv_isbn";
+	public final static String CHAMPS_QUANTITE = "liv_quantite";
+	public final static String CHAMPS_CATEGORIE = "cat_id";
+	public final static String CHAMPS_AUTEUR = "aut_id";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="INSERT">
 	public static final String INSERT  = ""; //todo:
@@ -33,7 +36,8 @@ public class LivreRequetes {
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="SELECT ALL">
-	public static final String SELECT_ALL  = ""; //todo:
+	public static final String SELECT_ALL  =  "SELECT " + CHAMPS_ID + ", " + CHAMPS_TITRE + ", " + CHAMPS_RESUME + ", " + CHAMPS_IMAGE
+			+ ", " + CHAMPS_ISBN + ", " + CHAMPS_QUANTITE + ", " + CHAMPS_CATEGORIE + ", " + CHAMPS_AUTEUR + " FROM LIVRE";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="UPDATE">
 	public static final String UPDATE = ""; //todo:

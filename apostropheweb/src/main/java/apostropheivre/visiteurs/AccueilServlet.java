@@ -1,8 +1,10 @@
 package apostropheivre.visiteurs;
 
 import apostropheivre.ApostropheIvre;
-import apostropheivre.auteur.AuteurDAO;
+import apostropheivre.Cache;
+import apostropheivre.libraire.auteur.AuteurDAO;
 import apostropheivre.categorie.CategorieDAO;
+import apostropheivre.services.DataDB;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,12 +18,10 @@ import java.io.IOException;
 @WebServlet("/accueil")
 public class AccueilServlet extends HttpServlet {
     static {
-        AuteurDAO.setForcerRequete(true);
-        ApostropheIvre.AUTEURS = AuteurDAO.listerAuteurs();
-        AuteurDAO.setForcerRequete(false);
-        CategorieDAO.setForcerRequete(true);
-        ApostropheIvre.CATEGORIES = CategorieDAO.listerCategories();
-        CategorieDAO.setForcerRequete(false);
+
+//        CategorieDAO.setForcerRequete(true);
+//        ApostropheIvre.CATEGORIES = CategorieDAO.listerCategories();
+//        CategorieDAO.setForcerRequete(false);
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {

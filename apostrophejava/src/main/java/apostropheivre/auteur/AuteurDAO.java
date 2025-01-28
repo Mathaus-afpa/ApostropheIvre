@@ -196,17 +196,6 @@ public class AuteurDAO {
 		return false;
 	}
 	//
-	public static boolean isMaintenirConnection() {
-		return maintenirConnection;
-	}
-	public static void setMaintenirConnection(boolean maintenirConnection) {
-		AuteurDAO.maintenirConnection = maintenirConnection;
-	}
-	public static boolean isForcerRequete() {
-		return forcerRequete;
-	}
-	public static void setForcerRequete(boolean forcerRequete) {
-		AuteurDAO.forcerRequete = forcerRequete;
-	}
+
 	//
 }

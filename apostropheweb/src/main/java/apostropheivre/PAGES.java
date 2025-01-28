@@ -1,0 +1,28 @@
+package apostropheivre;
+/**
+ * [PAGES] - class
+ * @author Mathaus
+ */
+public class PAGES {
+	private PAGES() {}
+	public static String APP = "/app.jsp";
+	public static String ACCUEIL = "/accueil.jsp";
+	public static String INSCRIPTION = "/inscription.jsp";
+	public static String CONNEXION = "/connexion.jsp";
+	public static String DECONNEXION = "/deconnexion.jsp";
+	public static String COMPTE_ADMIN = "/compte_administrateur.jsp";
+	public static String LISTE_COMPTES = "/comptes.jsp";
+	public static String DETAILS_COMPTE = "/compte.jsp";
+	public static String LISTE_LIBRAIRES = "/libraires.jsp";
+	public static String DETAILS_LIBRAIRE = "/libraire.jsp";
+	public static String COMPTE_LIBRAIRE = "/compte_libraire.jsp";
+	public static String LISTE_AUTEURS = "/auteurs.jsp";
+	public static String DETAILS_AUTEUR = "/auteur.jsp";
+	public static String LISTE_CATEGORIES = "/categories.jsp";
+	public static String DETAILS_CATEGORIE = "/categorie.jsp";
+	public static String LISTE_LIVRES = "/livres.jsp";
+	public static String DETAILS_LIVRE = "/livre.jsp";
+	public static String LISTE_CLIENTS = "/clients.jsp";
+	public static String DETAILS_CLIENT = "/client.jsp";
+	public static String COMPTE_CLIENT = "/compte_client.jsp";
+}

@@ -16,8 +16,8 @@ public class Auteur {
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs JSON">
 	private static final String REGEX_NOM = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
-	private static final String REGEX_PRENOM = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
-	private static final String REGEX_URL = "^[\\w\\d_\\-]+\\.(jpg|jpeg|png|bmp)$";
+	private static final String REGEX_PRENOM = "^[A-ZÀ-ÖØ-Ý-a-zà-öø-ÿ\\-\\.\\s]{1,49}$";
+	private static final String REGEX_URL = ".*";//"^[\\w\\d_\\-]+\\.(jpg|jpeg|png|bmp)$";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs prive">
 	private Integer id;
@@ -41,7 +41,7 @@ public class Auteur {
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Setter">
 	public void setId(int id) {
-		this.id = id;
+		this.id = (id > 0) ? id : null;
 	}
 	public void setNom(String nom) throws RegExException {
 		if (Pattern.matches(REGEX_NOM, nom)) {

@@ -14,8 +14,8 @@ public class Libraire {
 	public static final String JSON_PRENOM = "prenom";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs JSON">
-	private static final String REGEX_NOM = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
-	private static final String REGEX_PRENOM = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
+	private static final String REGEX_NOM = "^[A-ZÀ-ÖØ-Ý-a-zà-öø-ÿ\\-\\.\\s]{1,49}$";
+	private static final String REGEX_PRENOM = "^[A-ZÀ-ÖØ-Ý-a-zà-öø-ÿ\\-\\.\\s]{1,49}$";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs prive">
 	private Integer id;

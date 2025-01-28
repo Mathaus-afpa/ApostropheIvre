@@ -33,7 +33,7 @@ public class CompteRequetes {
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="SELECT ALL">
-	public static final String SELECT_ALL  = ""; //todo:
+	public static final String SELECT_ALL = "SELECT " + CHAMPS_ID + ", " + CHAMPS_LOGIN + " FROM USERS";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="UPDATE">
 	public static final String UPDATE = ""; //todo:

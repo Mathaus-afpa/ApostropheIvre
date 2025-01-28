@@ -1,4 +1,5 @@
 package apostropheivre.membres;
+import apostropheivre.Cache;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -20,10 +21,10 @@ public class CompteLibraireServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("auteurs", AUTEURS);
-            request.setAttribute("livres", new ArrayList<>());
-            request.setAttribute("categories", CATEGORIES);
-            request.setAttribute("clients", new ArrayList<>());
+            request.setAttribute("auteurs", Cache.listerAuteurs());
+            request.setAttribute("categories", Cache.listerCategories());
+            request.setAttribute("livres", Cache.listerLivres());
+            request.setAttribute("clients", Cache.listerClients());
             request.setAttribute("page", LIBRAIRE_DASHBOARD);
             request.setAttribute("edit", true);
             RequestDispatcher dispatcher = request.getRequestDispatcher(APP);

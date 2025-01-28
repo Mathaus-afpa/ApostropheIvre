@@ -13,7 +13,7 @@ public class Compte {
 	public static final String JSON_LOGIN = "login";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs JSON">
-	private static final String REGEX_LOGIN = "^[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ\\-\\s]{1,49}$";
+	private static final String REGEX_LOGIN = "^(?!.*[._\\-]{2})[a-zA-Z0-9._\\-@]{1,50}$";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Champs prive">
 	private Integer id;

@@ -30,7 +30,7 @@ public class CategorieRequetes {
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="SELECT ALL">
-	public static final String SELECT_ALL  = ""; //todo:
+	public static final String SELECT_ALL = "SELECT " + CHAMPS_ID + ", " + CHAMPS_LIBELLE + " FROM CATEGORIE";
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="UPDATE">
 	public static final String UPDATE = ""; //todo:
@@ -41,7 +41,7 @@ public class CategorieRequetes {
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="DELETE">
-	public static final String DELETE = "DELETE FROM USERS WHERE " + CHAMPS_ID + " = ?";
+	public static final String DELETE = "DELETE FROM CATEGORIE WHERE " + CHAMPS_ID + " = ?";
 	public static final PreparedStatement Delete(Connection connection, int id) throws SQLException {
 		PreparedStatement requetePreparee = connection.prepareStatement(CategorieRequetes.DELETE);
 		requetePreparee.setInt(1, id);
