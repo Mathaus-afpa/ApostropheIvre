@@ -133,6 +133,7 @@ public class LivresServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         LOGGER.info("Préparation du formulaire d'ajout");
         request.setAttribute("categories", categorieDAO.listerTous());
+        request.setAttribute("auteurs", auteurDAO.findAll());
         request.setAttribute("page", "/WEB-INF/Vues/Visiteur/ajouter-livre.jsp");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/app.jsp");
         dispatcher.forward(request, response);
