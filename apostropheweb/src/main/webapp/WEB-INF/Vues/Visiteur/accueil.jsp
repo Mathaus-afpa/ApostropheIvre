@@ -54,9 +54,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-white">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -92,9 +92,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-white">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -129,9 +129,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-zinc-500 ease-out duration-300 hover:border-none hover:bg-neutral-600 active:bg-neutral-500"
+                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-white">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 

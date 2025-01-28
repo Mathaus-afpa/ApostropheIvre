@@ -1,26 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%--<form action="./inscription" method="POST">--%>
-<%--    <label for="username">Nom d'utilisateur :</label>--%>
-<%--    <input type="text" id="username" name="username" required>--%>
-<%--    <br><br>--%>
-
-<%--    <label for="email">Adresse e-mail :</label>--%>
-<%--    <input type="email" id="email" name="email" required>--%>
-<%--    <br><br>--%>
-
-<%--    <label for="password">Mot de passe :</label>--%>
-<%--    <input type="password" id="password" name="password" required>--%>
-<%--    <br><br>--%>
-
-<%--    <label for="confirm-password">Confirmer le mot de passe :</label>--%>
-<%--    <input type="password" id="confirm-password" name="confirm-password" required>--%>
-<%--    <br><br>--%>
-
-<%--    <button type="submit">S'inscrire</button>--%>
-<%--</form>--%>
-
-
 <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
 <% String successMessage = (String) request.getAttribute("successMessage"); %>
 
@@ -32,21 +11,10 @@
     <% } %>
 </div>
 
-
 <div
         class="grid md:grid-cols-3 w-[57rem] mt-56 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
-    <div class="max-md:order-1 flex flex-col justify-center md:space-y-16 space-y-8 max-md:mt-16 min-h-full bg-gradient-to-r from-gray-900 to-gray-700 lg:px-8 px-4 py-4">
-        <div>
-            <h4 class="text-white text-lg">remplir avec un truc ici</h4>
-<%--            <p class="text-[13px] text-gray-300 mt-3 leading-relaxed"></p>--%>
-        </div>
-        <div>
-            <h4 class="text-white text-lg">on verra plus tard</h4>
-<%--            <p class="text-[13px] text-gray-300 mt-3 leading-relaxed"></p>--%>
-        </div>
-    </div>
 
-    <form action="./connexion" method="POST" class="md:col-span-2 w-full py-6 px-6 sm:px-16 max-md:max-w-xl mx-auto" >
+    <form action="./connexion" method="POST" class="md:col-span-3 w-full py-6 px-6 sm:px-16 max-md:max-w-xl mx-auto" >
 
         <input type="hidden" name="action" value="register">
 
@@ -63,9 +31,6 @@
                 <div class="relative flex items-center">
                     <input name="login" id="login" type="text" required
                            class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer identifiant" />
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" class="w-6 h-6 absolute right-4"
-                         viewBox="0 -960 960 960" width="24px" fill="#434343"><path d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80Zm-360-80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0-80Zm0 400Z"/>
-                    </svg>
                 </div>
 
             </div>
@@ -76,18 +41,6 @@
                 <div class="relative flex items-center">
                     <input name="mail" id="mail" type="email" required
                            class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer email" />
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 682.667 682.667">
-                        <defs>
-                            <clipPath id="a" clipPathUnits="userSpaceOnUse">
-                                <path d="M0 512h512V0H0Z" data-original="#000000"></path>
-                            </clipPath>
-                        </defs>
-                        <g clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
-                            <path fill="none" stroke-miterlimit="10" stroke-width="40" d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z" data-original="#000000"></path>
-                            <path d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z" data-original="#000000"></path>
-                        </g>
-                    </svg>
-
                 </div>
             </div>
 
