@@ -167,6 +167,8 @@ public class Cache {
 	public static List<Livre> listerLivres() {
 		if (LIVRES.isEmpty()) {
 			DataDB.setForcerRequete(true);
+			AuteurDAO.rechercherTout();
+			CategorieDAO.rechercherTout();
 			LivreDAO.rechercherTout();
 			DataDB.setForcerRequete(false);
 		}

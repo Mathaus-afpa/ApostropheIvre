@@ -11,11 +11,11 @@ public class ApostropheIvreServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String route = request.getRequestURI().substring(request.getContextPath().length());
         if (ROUTES.isRoutable(route)) {
-            doRouting(route, request, response);
-            if (!ROUTES.isController(route)) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(APP);
-                dispatcher.forward(request, response);
-            }
+            response.sendRedirect("./accueil");
+//            if (!ROUTES.isController(route)) {
+//                RequestDispatcher dispatcher = request.getRequestDispatcher(APP);
+//                dispatcher.forward(request, response);
+//            }
         } else {
             // Le chemin vers le fichier dans le système de fichiers
             String filePath = getServletContext().getRealPath(route);
