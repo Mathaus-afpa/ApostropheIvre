@@ -49,7 +49,7 @@ public class ApostropheIvreFilter implements Filter {
 				if (hasAccess) {
 					chain.doFilter(request, response); // Continuer si l'accès est autorisé
 				} else {
-					httpResponse.sendRedirect("./accueil"); // Bloquer l'accès et rediriger
+					((HttpServletResponse) response).sendError(404);
 				}
 			} else {
 				// Répondre avec une erreur 405 Method Not Allowed si la méthode n'est pas autorisée
