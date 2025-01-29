@@ -16,12 +16,8 @@
     <div class="p-8">
 
         <div class="px-8 py-4 bg-gray-700 text-center rounded-xl">
-
-            <span class="text-gray-400">Pas de panique ! Vous allez recevoir un </span>
-            <a class="font-medium text-green-500 hover:text-green-400 ease-out duration-300 hover:underline hover:underline-offset-4"
-               href="#"
-            >Email de récupération.</a>
-
+            <p class="text-gray-400">Pas de panique ! Renseignez l'adresse mail liée à votre compte et vous recevrez un </p>
+            <p class="font-medium text-green-500 animate-pulse ease-linear duration-300">Email de récupération.</p>
         </div>
 
         <form method="POST" action="./connexion" class="mt-8 space-y-6">
