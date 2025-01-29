@@ -26,6 +26,9 @@ public class Compte {
 	public String getLogin() {
 		return login;
 	}
+	public String getRole() {
+		return "ROLE";
+	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Setter">
 	public void setId(int id) {

@@ -12,14 +12,6 @@ public enum ROUTES {
     AUTEURS("/auteurs"),
     LIVRE("/livre"),
     LIVRES("/livres");
-//    CATEGORIE("/categorie"),
-//    CATEGORIES("/categories"),
-//    CLIENTS("/clients"),
-//    COMPTE("/compte"),
-//    COMPTES("/comptes"),
-
-//    LIBRAIRES("/libraires"),
-
     private final String path;
     public String getPath() {
         return path;
@@ -34,9 +26,6 @@ public enum ROUTES {
     }
     ROUTES(String path) {
         this.path = path;
-    }
-    public static boolean isController(String path) {
-        return CONTROLLEUR.getPath().equals(path);
     }
     public static boolean isRoutable(String path) {
         for (ROUTES route : values()) {
