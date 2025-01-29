@@ -61,7 +61,7 @@
 
                     <label class="flex items-center cursor-pointer relative">
 
-                        <input defaultChecked id="remember-me" name="remember-me" type="checkbox"
+                        <input defaultChecked id="cgu" name="cgu" type="checkbox" required
                                class="peer h-6 w-6 cursor-pointer transition-all appearance-none rounded-full bg-slate-100 shadow hover:shadow-md border border-slate-300 checked:bg-green-500 checked:border-green-500" id="check-custom-style" />
 
                         <span class="absolute text-slate-800 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -73,7 +73,7 @@
                     </label>
 
                 </div>
-                <label for="remember-me" class="ml-1 pt-1 block text-sm text-gray-400">
+                <label for="cgu" class="ml-1 pt-1 block text-sm text-gray-400">
                     J'accepte les termes et les conditions.<a href="#"
                                class="font-bold text-green-600 tracking-wider hover:text-lime-300 hover:underline hover:underline-offset-2 ml-1 ease-out duration-300">Termes
                     et Conditions</a>

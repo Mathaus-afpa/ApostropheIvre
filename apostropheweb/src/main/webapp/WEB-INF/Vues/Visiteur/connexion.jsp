@@ -27,7 +27,7 @@
                 <div>
                     <label class="sr-only" for="username">Identifiant</label>
                     <input placeholder="Identifiant"
-                            class="appearance-none relative block w-full px-3 py-3 text-gray-700 rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 shadow-md sm:text-sm"
+                           class="appearance-none relative block w-full px-3 py-3 text-gray-700 rounded-md focus:outline outline-offset-0 outline-gray-600 focus:outline-2 shadow-md sm:text-sm"
                             type="text"
                             id="username" name="username"
                             required/>
@@ -37,7 +37,7 @@
                     <label class="sr-only" for="password">Mot de passe</label>
                     <input
                             placeholder="Mot de passe"
-                            class="appearance-none relative block w-full px-3 py-3 text-gray-700 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 shadow-md sm:text-sm"
+                            class="appearance-none relative block w-full px-3 py-3 text-gray-700 rounded-md focus:outline outline-offset-0 outline-gray-600 focus:outline-2 shadow-md sm:text-sm"
                             required
                             type="password"
                             name="password"
@@ -95,7 +95,7 @@
                 <div class="flex items-center text-sm">
 
                     <a
-                            class="pt-1 font-medium text-gray-700 hover:text-green-600 hover:underline hover:underline-offset-4 select-none"
+                            class="pt-1 font-medium text-gray-700 hover:text-green-600 hover:underline hover:underline-offset-4 ease-out duration-300 select-none"
                             href="#">
                         Mot de passe oublié ?
                     </a>
@@ -119,7 +119,7 @@
     <div class="px-8 py-4 bg-gray-700 text-center rounded-xl">
 
         <span class="text-gray-400">Pas encore membre ?</span>
-        <a class="font-medium text-green-500 hover:text-green-400 hover:underline hover:underline-offset-4"
+        <a class="font-medium text-green-500 hover:text-green-400 ease-out duration-300 hover:underline hover:underline-offset-4"
            href="${pageContext.request.contextPath}/inscription"
         >Créer un compte.</a>
 
