@@ -12,7 +12,7 @@
     <p class="text-center italic">Exploitant : Staff ApostropheIvre.fr</p>
     <p class="text-center italic">Propriétaire : team CDA23016</p>
 
-    <span class="font-semibold>Conditions text-2xl"> Générales d'Utilisation (CGU)</span>
+    <span class="font-semibold>Conditions text-2xl"> Conditions Générales d'Utilisation (CGU)</span>
 
     <ol class="list-decimal">
 
@@ -42,7 +42,7 @@
 
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-    <span class="font-semibold>Conditions text-2xl"> Générales d'Utilisation (CGU)</span>
+    <span class="font-semibold>Conditions text-2xl"> Politiques de confidentialit</span>
 
     <ol class="list-decimal">
         <li class="font-semibold">Collecte des données</li>
