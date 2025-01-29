@@ -22,7 +22,7 @@ public class ClientServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
-			request.setAttribute("client", Cache.getClient(1)); //todo: mes infos
+			request.setAttribute("client", Cache.getClient(2)); //todo: mes infos
 			request.setAttribute("emprunts", null); //todo: mes emprunts Select where
 			request.setAttribute("page", PAGES.CLIENT + PAGES.COMPTE_CLIENT);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(PAGES.APP);

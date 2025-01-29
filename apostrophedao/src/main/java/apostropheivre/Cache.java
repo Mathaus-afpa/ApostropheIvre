@@ -14,7 +14,6 @@ import apostropheivre.libraire.client.ClientDAO;
 import apostropheivre.libraire.livre.Livre;
 import apostropheivre.libraire.livre.LivreDAO;
 import apostropheivre.services.DataDB;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
