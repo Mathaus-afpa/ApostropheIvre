@@ -13,8 +13,8 @@
         </td>
 
         <td class="px-6 py-4 flex justify-center gap-3">
-            <a href="#" class="font-normal text-blue-600 tracking-wide hover:underline underline-offset-2">Edition</a>
-            <a href="#" class="font-normal text-red-600 tracking-wide hover:underline underline-offset-2">Supprimer</a>
+            <a href="#" class="font-normal text-sky-500 tracking-wide hover:underline underline-offset-2">Edition</a>
+            <a href="#" class="font-normal text-rose-400 tracking-wide hover:underline underline-offset-2">Supprimer</a>
         </td>
 
     </tr>

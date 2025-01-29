@@ -45,7 +45,7 @@
 <%--    </div>--%>
 <%--</div>--%>
 
-
+<div style="width: 100%; position: sticky;"><h1>COMPTE</h1></div>
 <div class="w-[66rem] max-h-64 m-3 relative overflow-auto shadow-md rounded-xl">
     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
         <thead class="text-xs uppercase bg-gray-900 text-gray-400">
@@ -67,25 +67,24 @@
     </table>
 </div>
 
-<div style="width: 80%; margin-right: 5px;">
-    <div style="width: 100%; position: sticky;"><h1>LIBRAIRE</h1></div>
-    <div style="width: 100%; position: sticky;">
-        <table style="width: 100%;">
-            <tr>
-                <th>ID</th>
-                <th>VALEUR</th>
-                <th colspan="2">EDITION</th>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <input type="button" value="Nouveau">
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div style="width: 100%;height: 200px; overflow-y: scroll;">
-        <table style="width: 100%;">
+<div style="width: 100%; position: sticky;"><h1>LIBRAIRE</h1></div>
+<div class="w-[66rem] max-h-64 m-3 relative overflow-auto shadow-md rounded-xl">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+        <thead class="text-xs uppercase bg-gray-900 text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3 text-green-500 tracking-[.25em]">
+                ID
+            </th>
+            <th scope="col" class="px-6 py-3 text-green-500 tracking-[.25em]">
+                VALEUR
+            </th>
+            <th scope="col" class="px-6 py-3 text-green-500 text-center tracking-[.25em]">
+                GESTION
+            </th>
+        </tr>
+        </thead>
+        <tbody>
             <jsp:include page="../Administrateur/Libraires/libraires.jsp"></jsp:include>
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>
