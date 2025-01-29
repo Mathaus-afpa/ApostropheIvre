@@ -96,8 +96,8 @@
 
                     <a
                             class="pt-1 font-medium text-gray-700 hover:text-green-600 hover:underline hover:underline-offset-4 ease-out duration-300 select-none"
-                            href="#">
-                        Mot de passe oublié ?
+                            href="${pageContext.request.contextPath}/motdepasseperdu"
+                        >Mot de passe oublié ?
                     </a>
 
                 </div>

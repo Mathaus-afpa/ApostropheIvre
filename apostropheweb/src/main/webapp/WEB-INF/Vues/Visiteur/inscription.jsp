@@ -74,7 +74,7 @@
 
                 </div>
                 <label for="cgu" class="ml-1 pt-1 block text-sm text-gray-400">
-                    J'accepte les termes et les conditions.<a href="#"
+                    J'accepte les termes et les conditions.<a href="${pageContext.request.contextPath}/cgu"
                                class="font-bold text-green-600 tracking-wider hover:text-lime-300 hover:underline hover:underline-offset-2 ml-1 ease-out duration-300">Termes
                     et Conditions</a>
                 </label>
@@ -90,7 +90,7 @@
                 Créer compte
             </button>
         </div>
-        <p class="text-gray-400 text-sm mt-6 text-center">Déjà membre ? <a href="#"
+        <p class="text-gray-400 text-sm mt-6 text-center">Déjà membre ? <a href="${pageContext.request.contextPath}/connexion"
                                                                 class="font-bold text-green-600 tracking-wider hover:text-lime-300 hover:underline hover:underline-offset-2 ease-in-out duration-300">Se connecter</a></p>
     </form>
 </div>
