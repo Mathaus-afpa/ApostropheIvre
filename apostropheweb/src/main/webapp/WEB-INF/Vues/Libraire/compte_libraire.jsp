@@ -48,6 +48,7 @@
             </table>
         </div>
         <div style="width: 100%;height: 200px; overflow-y: scroll;">
+            <jsp:include page="../Visiteur/Livres/livres.jsp"></jsp:include>
         </div>
     </div>
     <div style="width: 25%; margin-right: 5px;">
@@ -63,7 +64,8 @@
             </table>
         </div>
         <div style="width: 100%;height: 200px; overflow-y: scroll;">
+            <jsp:include page="./Clients/clients.jsp"></jsp:include>
         </div>
     </div>
 </div>
-<jsp:include page="./auteur_modal.jsp"></jsp:include>
+<%--<jsp:include page="./auteur_modal.jsp"></jsp:include>--%>

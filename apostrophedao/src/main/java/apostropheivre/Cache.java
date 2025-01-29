@@ -14,7 +14,6 @@ import apostropheivre.libraire.client.ClientDAO;
 import apostropheivre.libraire.livre.Livre;
 import apostropheivre.libraire.livre.LivreDAO;
 import apostropheivre.services.DataDB;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -167,6 +166,8 @@ public class Cache {
 	public static List<Livre> listerLivres() {
 		if (LIVRES.isEmpty()) {
 			DataDB.setForcerRequete(true);
+			AuteurDAO.rechercherTout();
+			CategorieDAO.rechercherTout();
 			LivreDAO.rechercherTout();
 			DataDB.setForcerRequete(false);
 		}

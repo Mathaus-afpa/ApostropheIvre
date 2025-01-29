@@ -3,4 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+<!--    <session-config>-->
+<!--        &lt;!&ndash; Délai d'inactivité avant expiration de la session (en minutes) &ndash;&gt;-->
+<!--        <session-timeout>1</session-timeout>-->
+<!--        &lt;!&ndash; Configuration des cookies de session &ndash;&gt;-->
+<!--        <cookie-config>-->
+<!--            &lt;!&ndash; Le cookie n'est pas accessible par JavaScript (protection contre XSS) &ndash;&gt;-->
+<!--            <http-only>true</http-only>-->
+<!--            &lt;!&ndash; Le cookie de session est accessible uniquement via HTTPS &ndash;&gt;-->
+<!--            <secure>true</secure>-->
+<!--        </cookie-config>-->
+<!--&lt;!&ndash;        <tracking-mode>COOKIE</tracking-mode>&ndash;&gt;-->
+<!--        <tracking-mode>URL</tracking-mode>-->
+<!--    </session-config>-->
 </web-app>
