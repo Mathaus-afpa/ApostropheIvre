@@ -12,43 +12,43 @@
 </div>
 
 <div
-        class="grid md:grid-cols-3 w-[57rem] mt-56 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
+        class="grid md:grid-cols-3 w-[47rem] mt-56 items-center bg-gray-700 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
 
     <form action="./connexion" method="POST" class="md:col-span-3 w-full py-6 px-6 sm:px-16 max-md:max-w-xl mx-auto" >
 
         <input type="hidden" name="action" value="register">
 
         <div class="mb-6">
-            <h3 class="text-gray-800 text-xl font-bold">Nouveau membre</h3>
+            <h3 class="text-green-500 text-xl font-bold">Nouveau membre</h3>
         </div>
 
         <div class="space-y-6">
 
             <div>
 
-                <label class="text-gray-600 text-sm mb-2 block" for="login">Identifiant</label>
+                <label class="text-gray-400 text-sm mb-2 block" for="login">Identifiant</label>
 
                 <div class="relative flex items-center">
                     <input name="login" id="login" type="text" required
-                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer identifiant" />
+                           class="text-white tracking-normal bg-zinc-500 border border-stone-800 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline outline-offset-0 outline-green-500 focus:outline-2" placeholder="Entrer identifiant" />
                 </div>
 
             </div>
 
             <div>
 
-                <label class="text-gray-600 text-sm mb-2 block">Email</label>
+                <label class="text-gray-400 text-sm mb-2 block">Email</label>
                 <div class="relative flex items-center">
                     <input name="mail" id="mail" type="email" required
-                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer email" />
+                           class="text-white tracking-normal bg-zinc-500 border border-stone-800 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline outline-offset-0 outline-green-500 focus:outline-2" placeholder="Entrer email" />
                 </div>
             </div>
 
             <div>
-                <label class="text-gray-600 text-sm mb-2 block">Mot de passe</label>
+                <label class="text-gray-400 text-sm mb-2 block">Mot de passe</label>
                 <div class="relative flex items-center">
                     <input name="password" id="password" type="password" required
-                           class="text-gray-800 bg-white border border-gray-300 w-full text-sm pl-4 pr-8 py-2.5 rounded-md focus:outline-none focus:border-green-500" placeholder="Entrer mot de passe" />
+                           class="text-white tracking-normal bg-zinc-500 border border-stone-800 w-full text-sm pl-4 pr-10 py-2.5 rounded-md focus:outline outline-offset-0 outline-green-500 focus:outline-2" placeholder="Entrer mot de passe" />
                     <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
                         <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                     </svg>
@@ -73,9 +73,9 @@
                     </label>
 
                 </div>
-                <label for="remember-me" class="ml-1 pt-1 block text-sm text-gray-600">
+                <label for="remember-me" class="ml-1 pt-1 block text-sm text-gray-400">
                     J'accepte les termes et les conditions.<a href="#"
-                               class="font-bold text-gray-700 tracking-wider hover:text-green-600 hover:underline hover:underline-offset-2 ml-1 ease-out duration-300">Termes
+                               class="font-bold text-green-600 tracking-wider hover:text-lime-300 hover:underline hover:underline-offset-2 ml-1 ease-out duration-300">Termes
                     et Conditions</a>
                 </label>
             </div>
@@ -90,7 +90,7 @@
                 Créer compte
             </button>
         </div>
-        <p class="text-gray-600 text-sm mt-6 text-center">Déjà membre ? <a href="#"
-                                                                class="font-bold text-gray-700 tracking-wider hover:text-green-600 hover:underline hover:underline-offset-2 ease-in-out duration-300">Se connecter</a></p>
+        <p class="text-gray-400 text-sm mt-6 text-center">Déjà membre ? <a href="#"
+                                                                class="font-bold text-green-600 tracking-wider hover:text-lime-300 hover:underline hover:underline-offset-2 ease-in-out duration-300">Se connecter</a></p>
     </form>
 </div>
