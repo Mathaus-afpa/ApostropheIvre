@@ -31,6 +31,7 @@ public class Cache {
 	private static final Map<Integer, Compte> COMPTES = new TreeMap();
 	private static final Map<Integer,Libraire> LIBRAIRES = new TreeMap();
 	private static final Map<Integer,Livre> LIVRES = new TreeMap();
+	private static boolean isLoaded = false;
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="FONCTIONS CACHE">
 	/**
@@ -123,55 +124,43 @@ public class Cache {
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Validateurs">
-	public static List<Auteur> listerAuteurs() {
-		if (AUTEURS.isEmpty()) {
+	public static void initCache() {
+		if (!isLoaded) {
 			DataDB.setForcerRequete(true);
 			AuteurDAO.rechercherTout();
+			CategorieDAO.rechercherTout();
+			ClientDAO.rechercherTout();
+			CompteDAO.rechercherTout();
+			LibraireDAO.rechercherTout();
+			LivreDAO.rechercherTout();
+			isLoaded = true;
 			DataDB.setForcerRequete(false);
 		}
+	}
+	public static List<Auteur> listerAuteurs() {
 		return new ArrayList<>(AUTEURS.values());
 	}
 	public static List<Categorie> listerCategories() {
-		if (CATEGORIES.isEmpty()) {
-			DataDB.setForcerRequete(true);
-			CategorieDAO.rechercherTout();
-			DataDB.setForcerRequete(false);
-		}
 		return new ArrayList<>(CATEGORIES.values());
 	}
 	public static List<Client> listerClients() {
-		if (CLIENTS.isEmpty()) {
-			DataDB.setForcerRequete(true);
-			ClientDAO.rechercherTout();
-			DataDB.setForcerRequete(false);
-		}
 		return new ArrayList<>(CLIENTS.values());
 	}
 	public static List<Compte> listerComptes() {
-		if (COMPTES.isEmpty()) {
-			DataDB.setForcerRequete(true);
-			CompteDAO.rechercherTout();
-			DataDB.setForcerRequete(false);
-		}
 		return new ArrayList<>(COMPTES.values());
 	}
 	public static List<Libraire> listerLibraires() {
-		if (LIBRAIRES.isEmpty()) {
-			DataDB.setForcerRequete(true);
-			LibraireDAO.rechercherTout();
-			DataDB.setForcerRequete(false);
-		}
 		return new ArrayList<>(LIBRAIRES.values());
 	}
 	public static List<Livre> listerLivres() {
-		if (LIVRES.isEmpty()) {
-			DataDB.setForcerRequete(true);
-			AuteurDAO.rechercherTout();
-			CategorieDAO.rechercherTout();
-			LivreDAO.rechercherTout();
-			DataDB.setForcerRequete(false);
-		}
 		return new ArrayList<>(LIVRES.values());
 	}
 	//</editor-fold>
+	public static List<Livre> getTop3LivresByQuantite() {
+		// Trier les livres par quantité en ordre décroissant
+		List<Livre> sortedLivres = listerLivres();
+		sortedLivres.sort((l1, l2) -> Integer.compare(l2.getQuantite(), l1.getQuantite()));
+		// Retourner les 3 premiers livres
+		return sortedLivres.size() > 3 ? sortedLivres.subList(0, 3) : sortedLivres;
+	}
 }

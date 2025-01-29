@@ -9,8 +9,12 @@
 
 
   <div class=" flex flex-col items-center">
-
-    <span class="text-center">Logo provisoire</span>
+    <c:if test="${not empty sessionScope.role}">
+      <span class="text-center text-red-500">${sessionScope.role}</span>
+    </c:if>
+    <c:if test="${empty sessionScope.role}">
+      <span class="text-center text-red-500">Visiteur</span>
+    </c:if>
 
     <svg class="w-48" xmlns="http://www.w3.org/2000/svg" version="1.0" width="190.000000pt" height="180.000000pt"
          viewBox="0 0 190.000000 180.000000" preserveAspectRatio="xMidYMid meet">
@@ -71,10 +75,20 @@
   </a>
 
 <%--  ----------------------------------------------------------------- LIENS DE MATHAUS ---------------------------------------------------------------- --%>
-
+  <c:choose>
+    <c:when test="${sessionScope.role == 'administrateur'}">
+      <h3 class="text-center">Les liens de ADMINOSAURUS</h3>
+    </c:when>
+    <c:when test="${sessionScope.role == 'libraire'}">
+      <h3 class="text-center">Les liens de LIBRAIMOVICH</h3>
+    </c:when>
+    <c:when test="${sessionScope.role == 'client'}">
+      <h3 class="text-center">Les liens de CLIENTERAPTOR</h3>
+    </c:when>
+  </c:choose>
   <div class="lienMathaus mt-8">
 
-    <h3 class="text-center">Les liens de Mathaus</h3>
+
 
     <a href="${pageContext.request.contextPath}/libraire">
 

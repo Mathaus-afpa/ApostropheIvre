@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <h1 class="text text-7xl mt-3">Bienvenue !</h1>
@@ -25,123 +26,22 @@
 
 </div>
 
-<h2 class="space-y-96 text-5xl mt-20">Nouveautés :</h2>
+<h2 class="space-y-96 text-5xl mt-20">Essayez :</h2>
 
 <div class="card-container flex justify-center mt-8 gap-20">
 
-    <!--  Début Livres cards -->
-    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-
-        <a href="${pageContext.request.contextPath}/livre/details">
-
-            <img src="${pageContext.request.contextPath}/Images/livres/2757851357.jpg" alt="photo livre"
-                 class="h-80 w-80 object-cover rounded-t-xl"/>
-
-            <div class="px-3 py-3 w-full">
-
-                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
-
-                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
-
-                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
-
-                <div class="flex items-center">
-
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
-
-                </div>
-
-                <div class="mt-4 text-sm font-medium">
-
-                    <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
-                            href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </a>
-
-    </div>
-    <!--  Fin Livres cards -->
-
-    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-
-        <a href="${pageContext.request.contextPath}/livres/details">
-
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
-
-            <div class="px-3 py-3 w-full">
-
-                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
-
-                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
-
-                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
-
-                <div class="flex items-center">
-
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
-
-                </div>
-
-                <div class="mt-4 text-sm font-medium">
-
-                    <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
-                            href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </a>
-
-    </div>
-
-    <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-
-        <a href="${pageContext.request.contextPath}/livres/details">
-
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
-
-            <div class="px-3 py-3 w-full">
-
-                <span class="text-gray-400 mr-3 uppercase text-xs">Catégorie</span>
-
-                <p class="text-lg font-bold text-black truncate block capitalize">Titre Livre</p>
-
-                <p class="text-sm text-gray-600 cursor-auto ml-2">Année</p>
-
-                <div class="flex items-center">
-
-                    <p class="text-lg font-semibold text-black cursor-auto my-3">Nom Auteur</p>
-
-                </div>
-
-                <div class="mt-4 text-sm font-medium">
-
-                    <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
-                            href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </a>
-
-    </div>
+    <c:forEach var="livre" items="${livres}">
+        <c:if test="${not empty livre}">
+            <jsp:include page="/WEB-INF/Vues/Modules/carte.jsp">
+                <jsp:param name="livreId" value="${livre.getId()}" />
+                <jsp:param name="livreNom" value="${livre.getTitre()}" />
+                <jsp:param name="livreIsbn" value="${livre.getIsbn()}" />
+                <jsp:param name="livreImage" value="${livre.getImage()}" />
+                <jsp:param name="livreAuteur" value="${livre.getAuteur()}" />
+                <jsp:param name="livreCategorie" value="${livre.getCategorie()}" />
+            </jsp:include>
+        </c:if>
+    </c:forEach>
 
 </div>
 

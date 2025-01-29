@@ -20,10 +20,6 @@ import java.io.IOException;
 @WebServlet("/connexion")
 public class ConnexionServlet extends HttpServlet {
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		Cache.listerComptes();
-	}
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
 			request.setAttribute("page", "/WEB-INF/Vues/Visiteur/connexion.jsp");

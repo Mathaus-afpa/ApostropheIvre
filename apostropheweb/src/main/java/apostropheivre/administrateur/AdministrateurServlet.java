@@ -1,7 +1,7 @@
 package apostropheivre.administrateur;
 import apostropheivre.Cache;
 import apostropheivre.PAGES;
-import apostropheivre.utils.Log;
+import apostropheivre.utilitaires.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

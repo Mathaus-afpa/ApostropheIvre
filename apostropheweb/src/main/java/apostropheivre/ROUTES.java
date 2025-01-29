@@ -9,7 +9,8 @@ public enum ROUTES {
     LIBRAIRE("/libraire"),
     CLIENT("/client"),
     LIVRE("/livre"),
-    LIVRES("/livres");
+    LIVRES("/livres"),
+    CGU("/cgu");
     private final String path;
     public String getPath() {
         return path;
@@ -40,7 +41,8 @@ public enum ROUTES {
                 || route == CONNEXION
                 || route == DECONNEXION
                 || route == LIVRES
-                || route == LIVRE;
+                || route == LIVRE
+                || route == CGU;
     }
     public static boolean forClient(ROUTES route) {
         return forVisiteur(route) || route == ACCUEIL;

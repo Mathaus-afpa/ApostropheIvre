@@ -1,23 +1,12 @@
 package apostropheivre.visiteurs;
-
-import apostropheivre.UserDatabase;
-import apostropheivre.compte.Compte;
-import apostropheivre.compte.CompteDAO;
-import apostropheivre.dao.DAOcompte;
-import apostropheivre.services.EmailService;
-import apostropheivre.utils.Log;
-import jakarta.mail.MessagingException;
+import apostropheivre.utilitaires.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import org.json.JSONObject;
-
 import java.io.IOException;
-
 @WebServlet("/cgu")
 public class CguServlet extends HttpServlet {
     @Override

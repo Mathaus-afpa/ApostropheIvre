@@ -1,9 +1,8 @@
 package apostropheivre.libraire;
 import apostropheivre.Cache;
 import apostropheivre.PAGES;
-import apostropheivre.utils.Log;
+import apostropheivre.utilitaires.Log;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
