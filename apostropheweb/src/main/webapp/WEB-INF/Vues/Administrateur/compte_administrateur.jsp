@@ -48,7 +48,7 @@
 <div style="width: 100%; position: sticky;"><h1>COMPTE</h1></div>
 <div class="w-[66rem] max-h-64 m-3 relative overflow-auto shadow-md rounded-xl">
     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-        <thead class="text-xs uppercase bg-gray-900 text-gray-400">
+        <thead class="text-xs uppercase bg-gray-900 text-gray-400 sticky top-0">
         <tr>
             <th scope="col" class="px-6 py-3 text-green-500 tracking-[.25em]">
                 ID
@@ -70,7 +70,7 @@
 <div style="width: 100%; position: sticky;"><h1>LIBRAIRE</h1></div>
 <div class="w-[66rem] max-h-64 m-3 relative overflow-auto shadow-md rounded-xl">
     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-        <thead class="text-xs uppercase bg-gray-900 text-gray-400">
+        <thead class="text-xs uppercase bg-gray-900 text-gray-400 sticky top-0">
         <tr>
             <th scope="col" class="px-6 py-3 text-green-500 tracking-[.25em]">
                 ID
