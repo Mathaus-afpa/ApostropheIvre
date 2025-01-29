@@ -14,7 +14,8 @@ public class LivresServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try {
 			request.setAttribute("livres", Cache.listerLivres());
-			request.setAttribute("page", PAGES.VISITEUR + PAGES.LISTE_LIVRES);
+			///request.setAttribute("param.module", "LIVRES");
+			request.setAttribute("page", PAGES.MODULE + PAGES.LISTE_LIVRES + "?module=LIVRES");
 			RequestDispatcher dispatcher = request.getRequestDispatcher(PAGES.APP);
 			dispatcher.forward(request, response);
 		} catch (ServletException e) {

@@ -27,7 +27,7 @@ public class Compte {
 		return login;
 	}
 	public String getRole() {
-		return "ROLE";
+		return "libraire";
 	}
 	//</editor-fold>
 	//<editor-fold defaultstate="expanded" desc="Setter">

@@ -9,6 +9,7 @@ public class PAGES {
 	public static String LIBRAIRE = "/WEB-INF/Vues/Libraire";
 	public static String CLIENT = "/WEB-INF/Vues/Client";
 	public static String VISITEUR = "/WEB-INF/Vues/Visiteur";
+	public static String MODULE = "/WEB-INF/Vues/Modules";
 	public static String APP = "/app.jsp";
 	public static String ACCUEIL = "/accueil.jsp";
 	public static String INSCRIPTION = "/inscription.jsp";
@@ -24,7 +25,7 @@ public class PAGES {
 	public static String DETAILS_AUTEUR = "/auteur.jsp";
 	public static String LISTE_CATEGORIES = "/categories.jsp";
 	public static String DETAILS_CATEGORIE = "/categorie.jsp";
-	public static String LISTE_LIVRES = "/Livres/livres.jsp";
+	public static String LISTE_LIVRES = "/tableau.jsp";
 	public static String DETAILS_LIVRE = "/Livres/livre_details.jsp";
 	public static String LISTE_CLIENTS = "/clients.jsp";
 	public static String DETAILS_CLIENT = "/client.jsp";

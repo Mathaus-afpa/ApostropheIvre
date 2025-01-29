@@ -10,12 +10,8 @@ public class ApostropheIvreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String route = request.getRequestURI().substring(request.getContextPath().length());
-        if (ROUTES.isRoutable(route)) {
-            response.sendRedirect("./accueil");
-//            if (!ROUTES.isController(route)) {
-//                RequestDispatcher dispatcher = request.getRequestDispatcher(APP);
-//                dispatcher.forward(request, response);
-//            }
+        if (route.equals("/")) {
+            response.sendRedirect(request.getContextPath() + ROUTES.ACCUEIL.getPath());
         } else {
             // Le chemin vers le fichier dans le système de fichiers
             String filePath = getServletContext().getRealPath(route);
@@ -42,47 +38,6 @@ public class ApostropheIvreServlet extends HttpServlet {
                     outputStream.flush();
                 }
             }
-        }
-    }
-    private void doRouting(String route, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        switch (ROUTES.getRoute(route)) {
-            case CONTROLLEUR:
-                response.sendRedirect("./accueil");
-            case ACCUEIL:
-                request.setAttribute("page", ACCUEIL);
-                break;
-            case INSCRIPTION:
-                request.setAttribute("page", INSCRIPTION);
-                break;
-            case CONNEXION:
-                request.setAttribute("page", CONNEXION);
-                break;
-            case DECONNEXION:
-                request.setAttribute("page", DECONNEXION);
-                break;
-            case ADMINISTRATEUR:
-                request.setAttribute("page", COMPTE_ADMIN);
-                break;
-            case AUTEUR:
-                request.setAttribute("page", DETAILS_AUTEUR);
-                break;
-            case AUTEURS:
-                request.setAttribute("page", LISTE_AUTEURS);
-                break;
-            case CLIENT:
-                request.setAttribute("page", COMPTE_CLIENT);
-                break;
-            case LIBRAIRE:
-                request.setAttribute("page", COMPTE_LIBRAIRE);
-                break;
-            case LIVRE:
-                request.setAttribute("page", ACCUEIL);
-                break;
-            case LIVRES:
-                request.setAttribute("page", ACCUEIL);
-                break;
-            default:
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 }
