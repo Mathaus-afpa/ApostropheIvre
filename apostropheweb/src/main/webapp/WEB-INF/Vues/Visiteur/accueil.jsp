@@ -56,7 +56,7 @@
                     <a
                             class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -94,7 +94,7 @@
                     <a
                             class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -131,7 +131,7 @@
                     <a
                             class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
                             href="#">
-                        <span class="font-medium group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -144,3 +144,4 @@
     </div>
 
 </div>
+
