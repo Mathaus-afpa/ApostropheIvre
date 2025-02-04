@@ -24,10 +24,10 @@
 
             <div class="rounded-md shadow-sm">
 
-                <div>
+                <div class="border focus-within:border-neutral-500 transition duration-300 border-gray-500/30 rounded-md">
                     <label class="sr-only" for="mail">Email</label>
                     <input placeholder="Adresse email"
-                           class="appearance-none relative block w-full px-3 py-3 text-gray-700 rounded-md focus:outline outline-offset-0 outline-gray-600 focus:outline-2 shadow-md sm:text-sm"
+                           class="outline-none relative block w-full px-3 py-3 text-gray-700 rounded-md shadow-md sm:text-sm"
                            type="text"
                            id="mail" name="mail"
                            required/>

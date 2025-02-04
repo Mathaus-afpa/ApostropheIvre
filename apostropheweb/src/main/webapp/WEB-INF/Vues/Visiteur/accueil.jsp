@@ -108,7 +108,8 @@
 
     <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
 
-        <a href="${pageContext.request.contextPath}/livres/details">
+        <a href=
+                   /livres/details">
 
             <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
 

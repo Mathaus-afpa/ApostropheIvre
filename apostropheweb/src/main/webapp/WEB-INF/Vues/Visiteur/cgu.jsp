@@ -42,7 +42,7 @@
 
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-    <span class="font-semibold>Conditions text-2xl"> Politiques de confidentialit</span>
+    <span class="font-semibold>Conditions text-2xl"> Politiques de confidentialité</span>
 
     <ol class="list-decimal">
         <li class="font-semibold">Collecte des données</li>
