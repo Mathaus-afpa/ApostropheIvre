@@ -43,9 +43,9 @@
                         <a href="${pageContext.request.contextPath}/modifier-livre?isbn=${livre.isbn}">
                             Modifier
                         </a>
-                        <a href="${pageContext.request.contextPath}/livre/details?id=${livre.id}">/livres/details?id=${livre.id}</a><br><br>
+                        <a href="${pageContext.request.contextPath}/livre/details?id=${livre.id}">afficher</a><br><br>
                         <!-- Bouton Supprimer avec confirmation -->
-                        <form action="${pageContext.request.contextPath}/supprimer-livre"
+                        <form action="${pageContext.request.contextPath}/supprimer-livre?isbn=${livre.isbn}"
                               method="POST"
                               style="display: inline;"
                               onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">
