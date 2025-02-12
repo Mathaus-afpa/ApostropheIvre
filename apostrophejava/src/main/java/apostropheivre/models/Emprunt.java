@@ -16,7 +16,7 @@ public class Emprunt {
 	private Integer statut;
 
 	public void setId_client(Integer id_client) throws InputMismatchException, SQLException {
-
+		/*
 		int resultat=0;
 
 		Connection con = BDDservice.getInstance().getConnection();
@@ -34,13 +34,16 @@ public class Emprunt {
 		} else {
             this.id_client = id_client;
 		}
+
+ */
+		this.id_client = id_client;
 	}
 	public Integer getId_client() {
 		return this.id_client;
 	}
 
 	public void setId_livre(Integer id_livre) throws InputMismatchException, SQLException {
-
+		/*
 		int resultat=0;
 
 		Connection con = BDDservice.getInstance().getConnection();
@@ -58,12 +61,16 @@ public class Emprunt {
 		} else {
 			this.id_livre = id_livre;
 		}
+
+ */
+		this.id_livre = id_livre;
 	}
 	public Integer getId_livre() {
 		return this.id_livre;
 	}
 
 	public void setId_libraire(Integer id_libraire) throws InputMismatchException, SQLException {
+		/*
 		int resultat=0;
 
 		Connection con = BDDservice.getInstance().getConnection();
@@ -81,6 +88,9 @@ public class Emprunt {
 		} else {
 			this.id_libraire = id_libraire;
 		}
+
+		 */
+		this.id_libraire = id_libraire;
 	}
 	public Integer getId_libraire() {
 		return this.id_libraire;

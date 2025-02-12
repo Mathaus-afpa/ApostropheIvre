@@ -4,7 +4,6 @@ import apostropheivre.models.Client;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ClientDAO extends DAOgenerale<Client> {
@@ -16,6 +15,7 @@ public class ClientDAO extends DAOgenerale<Client> {
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(insertSQL.toString(),PreparedStatement.RETURN_GENERATED_KEYS);
+
             pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
@@ -33,10 +33,11 @@ public class ClientDAO extends DAOgenerale<Client> {
                 newId = rs.getInt(1);
             }
 
-            BDDservice.getInstance().closeConnection();
             return newId;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
@@ -44,9 +45,9 @@ public class ClientDAO extends DAOgenerale<Client> {
     public String update(Client obj, Integer pId) {
         StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_code_postal=?," +
                 "cli_ville=?, cli_email=? where cli_id = ?");
-        try {
-            Connection con = BDDservice.getInstance().getConnection();
-            PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
+        try (Connection con = BDDservice.getInstance().getConnection();
+             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString())) {
+
             pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
             pstmt.setString(3, obj.getAdresse());
@@ -57,7 +58,6 @@ public class ClientDAO extends DAOgenerale<Client> {
 
             pstmt.executeUpdate();
 
-            BDDservice.getInstance().closeConnection();
             return("Client mis à jour avec succès.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,16 +70,17 @@ public class ClientDAO extends DAOgenerale<Client> {
 
         try {
             Connection con = BDDservice.getInstance().getConnection();
-
             PreparedStatement pstmt = con.prepareStatement(deleteSQL.toString());
+
             pstmt.setInt(1, pId);
 
             pstmt.executeUpdate();
 
-            BDDservice.getInstance().closeConnection();
             return ("Abonne supprimé avec succès");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
@@ -88,16 +89,14 @@ public class ClientDAO extends DAOgenerale<Client> {
 
         StringBuilder selectById = new StringBuilder("select * from client where cli_id=?");
 
-        try {
-            Connection con = BDDservice.getInstance().getConnection();
-            PreparedStatement pstmt = con.prepareStatement(selectById.toString());
+        try (Connection con = BDDservice.getInstance().getConnection();
+             PreparedStatement pstmt = con.prepareStatement(selectById.toString())) {
+
             pstmt.setInt(1,pId);
             ResultSet resultSet = pstmt.executeQuery();
 
-            Client client = null;
-
             while(resultSet.next()) {
-                client = new Client(
+                return new Client(
                 resultSet.getString("Cli_nom"),
                 resultSet.getString("Cli_prenom"),
                 resultSet.getString("Cli_Adresse"),
@@ -106,17 +105,14 @@ public class ClientDAO extends DAOgenerale<Client> {
                 resultSet.getString("Cli_Email")
                 );
             }
-            BDDservice.getInstance().closeConnection();
 
-            if (client == null) {
-                throw new SQLException("Ce client n'existe pas");
-            }
+            throw new SQLException("Ce client n'existe pas");
             // TODO : page erreur inexistence du client
 
-            return client;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
     }
 
@@ -144,12 +140,13 @@ public class ClientDAO extends DAOgenerale<Client> {
                 listCli.add(client);
             }
 
-            BDDservice.getInstance().closeConnection();
-
             return listCli;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        finally {
+            BDDservice.getInstance().closeConnection();
         }
 
     }

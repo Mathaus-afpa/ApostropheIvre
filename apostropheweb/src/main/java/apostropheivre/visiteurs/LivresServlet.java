@@ -40,7 +40,7 @@ public class LivresServlet extends HttpServlet {
             throws ServletException, IOException {
         //String pathInfo = request.getPathInfo();
         Connection connection = bddService.getConnection();
-        livreDAO = new LivreDAO(connection);
+        livreDAO = new LivreDAO();
         auteurDAO = new AuteurDAO();
         categorieDAO = new CategorieDAO(connection);
         String contextPath = request.getContextPath();

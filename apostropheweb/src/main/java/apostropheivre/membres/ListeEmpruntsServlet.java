@@ -1,6 +1,6 @@
 package apostropheivre.membres;
 
-import apostropheivre.dao.ClientDAO;
+import apostropheivre.dao.EmpruntDAO;
 import apostropheivre.utils.Log;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -11,14 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import static jakarta.servlet.SessionTrackingMode.URL;
-
-@WebServlet("/gestion/clients")
-public class ListeClientsServlet extends HttpServlet {
+@WebServlet("/gestion/emprunts")
+public class ListeEmpruntsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_clients.jsp");
+            request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_emprunts.jsp");
             RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -29,18 +27,16 @@ public class ListeClientsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("id", request.getParameter("idSup"));
         if (request.getAttribute("id") != null) {
+            doDelete(request, response);
 
             try {
-                doDelete(request, response);
-                response.setHeader("Refresh","0;URL="+request.getRequestURI());
+                EmpruntDAO emd = new EmpruntDAO();
 
-//                ClientDAO cld = new ClientDAO();
-//
-//                request.setAttribute("Liste_Clients", cld.findAll());
-//                request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_clients.jsp");
-//                RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
-//                dispatcher.forward(request, response);
-            } catch (Exception e) {
+                request.setAttribute("Liste_Emprunts", emd.findAll());
+                request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_emprunts.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
+                dispatcher.forward(request, response);
+            } catch (ServletException e) {
                 Log.error(e.getMessage(), e);
             }
         }
@@ -48,8 +44,8 @@ public class ListeClientsServlet extends HttpServlet {
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            ClientDAO cld = new ClientDAO();
-            cld.delete(Integer.parseInt((String) request.getAttribute("id")));
+            EmpruntDAO emd = new EmpruntDAO();
+            emd.delete(Integer.parseInt((String) request.getAttribute("id")));
         } catch (Exception e){
             Log.error(e.getMessage(), e);
         }
