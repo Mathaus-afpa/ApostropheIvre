@@ -35,6 +35,8 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
 
         } catch (SQLException e) {
 
+            BDDservice.getInstance().closeConnection();
+
             throw new RuntimeException(e);
 
         }
@@ -62,6 +64,8 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
 
         } catch (SQLException e) {
 
+            BDDservice.getInstance().closeConnection();
+
             throw new RuntimeException(e);
 
         }
@@ -86,6 +90,8 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
             return ("Libraire supprimé avec succès");
 
         } catch (SQLException e) {
+
+            BDDservice.getInstance().closeConnection();
 
             throw new RuntimeException(e);
 
@@ -120,6 +126,8 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
 
         } catch (SQLException e) {
 
+            BDDservice.getInstance().closeConnection();
+
             throw new RuntimeException(e);
 
         }
@@ -147,6 +155,8 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
             return listLib;
 
         } catch (SQLException e) {
+
+            BDDservice.getInstance().closeConnection();
 
             throw new RuntimeException(e);
 

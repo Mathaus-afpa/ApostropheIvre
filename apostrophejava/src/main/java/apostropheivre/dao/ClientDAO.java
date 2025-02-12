@@ -45,8 +45,9 @@ public class ClientDAO extends DAOgenerale<Client> {
     public String update(Client obj, Integer pId) {
         StringBuilder updateSQL = new StringBuilder("update Client set cli_nom=?, cli_prenom=?, cli_Adresse=?, cli_code_postal=?," +
                 "cli_ville=?, cli_email=? where cli_id = ?");
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString())) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
 
             pstmt.setString(1, obj.getNom());
             pstmt.setString(2, obj.getPrenom());
@@ -61,6 +62,8 @@ public class ClientDAO extends DAOgenerale<Client> {
             return("Client mis à jour avec succès.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
@@ -89,8 +92,9 @@ public class ClientDAO extends DAOgenerale<Client> {
 
         StringBuilder selectById = new StringBuilder("select * from client where cli_id=?");
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt = con.prepareStatement(selectById.toString())) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement(selectById.toString());
 
             pstmt.setInt(1,pId);
             ResultSet resultSet = pstmt.executeQuery();
@@ -109,10 +113,10 @@ public class ClientDAO extends DAOgenerale<Client> {
             throw new SQLException("Ce client n'existe pas");
             // TODO : page erreur inexistence du client
 
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
-
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 

@@ -17,8 +17,10 @@ public class LivreDAO {
         String sql = "INSERT INTO LIVRE (liv_titre, liv_resume, liv_image, liv_isbn, " +
                 "liv_quantite, cat_id, aut_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
             stmt.setString(1, livre.getTitre());
             stmt.setString(2, livre.getResume());
             stmt.setString(3, livre.getImage());
@@ -33,7 +35,13 @@ public class LivreDAO {
                 if (generatedKeys.next()) {
                     livre.setId(generatedKeys.getInt(1));
                 }
+            } catch (Exception ex) {
+                throw new SQLException(ex.getMessage());
             }
+        } catch (Exception e) {
+            throw new SQLException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
@@ -41,8 +49,10 @@ public class LivreDAO {
         String sql = "UPDATE LIVRE SET liv_titre = ?, liv_resume = ?, liv_image = ?, liv_quantite = ?, " +
                 "cat_id = ?, aut_id = ? WHERE liv_isbn = ?";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
             stmt.setString(1, livre.getTitre());
             stmt.setString(2, livre.getResume());
             stmt.setString(3, livre.getImage());
@@ -52,24 +62,35 @@ public class LivreDAO {
             stmt.setString(7, livre.getIsbn());
 
             stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new SQLException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
     public void supprimer(String isbn) throws SQLException {
         String sql = "DELETE FROM LIVRE WHERE liv_isbn = ?";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
             stmt.setString(1, isbn);
             stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new SQLException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
     public Livre trouverParIsbn(String isbn) throws SQLException {
         String sql = "SELECT * FROM LIVRE WHERE liv_isbn = ?;";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, isbn);
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -77,6 +98,10 @@ public class LivreDAO {
                     return creerLivreDepuisResultSet(rs);
                 }
             }
+        } catch (Exception e) {
+            throw new SQLException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
         return null;
     }
@@ -84,8 +109,9 @@ public class LivreDAO {
     public Livre trouverParId(Integer id) throws SQLException {
         String sql = "SELECT * FROM LIVRE WHERE liv_id = ?";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, id);
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -93,6 +119,10 @@ public class LivreDAO {
                     return creerLivreDepuisResultSet(rs);
                 }
             }
+        } catch (Exception e) {
+            throw new SQLException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
         return null;
     }
@@ -123,8 +153,9 @@ public class LivreDAO {
                 "FROM LIVRE l " +
                 "WHERE LOWER(l.liv_titre) LIKE LOWER(?)";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, "%" + titre + "%");
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -132,6 +163,10 @@ public class LivreDAO {
                     livres.add(creerLivreDepuisResultSet(rs));
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
         return livres;
     }
@@ -153,8 +188,9 @@ public class LivreDAO {
     public boolean isbnExiste(String isbn) throws SQLException {
         String sql = "SELECT COUNT(*) FROM LIVRE WHERE liv_isbn = ?";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, isbn);
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -162,6 +198,8 @@ public class LivreDAO {
                     return rs.getInt(1) > 0;
                 }
             }
+        } catch (Exception e) {
+            throw new SQLException(e);
         }
         return false;
     }

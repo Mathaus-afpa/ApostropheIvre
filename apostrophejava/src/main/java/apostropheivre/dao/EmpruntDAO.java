@@ -80,8 +80,9 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         StringBuilder updateSQL = new StringBuilder("update Emprunter set cli_id=?, liv_id=?, lib_id=?, date_emprunt=?, statut=?" +
                 "where cli_id = ? AND liv_id = ? AND lib_id = ?");
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString())) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
 
             pstmt.setInt(1, nCli);
             pstmt.setInt(2, nLiv);
@@ -98,14 +99,17 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
     public String delete(Emprunt obj) {
         StringBuilder deleteSQL = new StringBuilder("delete from Emprunter where cli_id=? AND liv_id=? AND lib_id=?");
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt = con.prepareStatement(deleteSQL.toString())) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement(deleteSQL.toString());
 
             pstmt.setInt(1, obj.getId_client());
             pstmt.setInt(2, obj.getId_livre());
@@ -117,15 +121,17 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
     public Emprunt find(Integer cli, Integer liv, Integer lib) throws SQLException {
         String selectById = "select * from Emprunter where cli_id=? AND liv_id=? AND lib_id=?";
 
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt=con.prepareStatement(selectById)) {
-
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt=con.prepareStatement(selectById);
             pstmt.setInt(1, cli);
             pstmt.setInt(2, liv);
             pstmt.setInt(3, lib);
@@ -140,6 +146,8 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
             }
         } catch (SQLException e){
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 }
