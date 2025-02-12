@@ -35,22 +35,7 @@ public class ApostropheIvreFilter implements Filter {
 				// Continuer le traitement si la méthode est autorisée
 				String role = (String) ((HttpServletRequest) request).getSession().getAttribute("role");
 				String path = httpRequest.getServletPath();
-				System.out.println(path + " " + role);
-				boolean hasAccess = false;
-				if (PAGES_VISITEUR.contains(path) || path.indexOf(".") != -1) {
-					hasAccess = true; // Les pages publiques sont accessibles à tout le monde
-				} else if ("administrateur".equals(role) && PAGES_ADMIN.contains(path)) {
-					hasAccess = true; // Les admins peuvent accéder aux pages admin
-				} else if ("libraire".equals(role) && PAGES_LIBRAIRE.contains(path)) {
-					hasAccess = true; // Les utilisateurs standards peuvent accéder aux pages user
-				} else if ("client".equals(role) && PAGES_CLIENT.contains(path)) {
-					hasAccess = true; // Les utilisateurs standards peuvent accéder aux pages user
-				}
-				if (hasAccess) {
-					chain.doFilter(request, response); // Continuer si l'accès est autorisé
-				} else {
-					((HttpServletResponse) response).sendError(404);
-				}
+				chain.doFilter(request, response);
 			} else {
 				// Répondre avec une erreur 405 Method Not Allowed si la méthode n'est pas autorisée
 				httpResponse.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
