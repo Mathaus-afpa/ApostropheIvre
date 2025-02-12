@@ -5,13 +5,14 @@
 <% EmpruntDAO emd =new EmpruntDAO() ;
     request.setAttribute("Liste_Emprunts",emd.findAll());
 
-//    LivreDAO lid = new LivreDAO();
-//    request.setAttribute("livD", lid);
-//
-//    ClientDAO cld = new ClientDAO();
-//    request.setAttribute("cliD",cld);
+    LivreDAO lid = new LivreDAO();
+    request.setAttribute("livD", lid);
+
+    ClientDAO cld = new ClientDAO();
+    request.setAttribute("cliD",cld);
 
     LibraireDAO brd = new LibraireDAO();
+    request.setAttribute("brD",brd);
 %>
 
 <form id="formListeEmp" method="POST" action="${pageContext.request.contextPath}/gestion/emprunts">
@@ -35,13 +36,13 @@
                         <c:out value="${livD.trouverParId(i.getId_livre()).getTitre()}" escapeXml="false"/>
                     </td>
                     <td style="border-style: solid; border-width:1px">
-                        <c:out value="${cliD.find(i.getId_client()).getNom()}" escapeXml="false"/>
+                        <c:out value="${cliD.find(i.getId_client()).getNom()} ${cliD.find(i.getId_client()).getPrenom()} " escapeXml="false"/>
                     </td>
                     <td style="border-style: solid; border-width:1px">
                         <c:out value="${i.getDate_emprunt()}" escapeXml="false"/>
                     </td>
                     <td style="border-style: solid; border-width:1px">
-                        <c:out value="${i.getId_libraire()}" escapeXml="false"/>
+                        <c:out value="${brD.find(i.getId_libraire()).getLib_nom()} ${brD.find(i.getId_libraire()).getLib_prenom()}" escapeXml="false"/>
                     </td>
                     <td style="border-style: solid; border-width:1px">
                         <c:out value="${i.getStatut()}" escapeXml="false"/>

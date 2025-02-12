@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 public class Libraire {
 
+	private Integer id;
 	private String lib_nom;
 	private String lib_prenom;
 
@@ -14,6 +15,16 @@ public class Libraire {
 			NullPointerException, IllegalArgumentException {
 		setLib_nom(lib_nom);
 		setLib_prenom(lib_prenom);
+	}
+
+	public Libraire(){}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getId() {
+		return this.id;
 	}
 
 	public String getLib_nom() {

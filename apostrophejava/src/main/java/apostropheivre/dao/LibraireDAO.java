@@ -102,7 +102,7 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
     @Override
     public Libraire find(Integer pId) {
 
-        Libraire libraire = new Libraire(null, null, null);
+        Libraire libraire = new Libraire();
 
         StringBuilder selectById = new StringBuilder("select * from libraire where lib_id=?");
 
@@ -115,6 +115,7 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
 
             while(resultSet.next()) {
 
+                libraire.setId(pId);
                 libraire.setLib_nom(resultSet.getString("Lib_nom"));
                 libraire.setLib_prenom(resultSet.getString("Lib_prenom"));
 
