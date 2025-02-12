@@ -43,4 +43,5 @@ public class Compte {
     public static final boolean ValiderJson(JSONObject compteJson) {
         return compteJson.has("login") && compteJson.has("mail") && compteJson.has("password");
     }
+
 }

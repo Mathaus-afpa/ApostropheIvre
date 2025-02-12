@@ -3,8 +3,7 @@
 <%@ include file="head.html" %>
 
 
-<div
-        class="sidebar flex-col fixed top-0 bottom-0 lg:left-0 mr-3 mt-3 mb-3 p-2 w-64 overflow-y-auto bg-slate-50 rounded-r-xl shadow-lg shadow-gray-500">
+<div class="sidebar fixed top-0 bottom-0 left-0 lg:left-0 w-64 bg-slate-50 shadow-lg shadow-gray-500 rounded-r-xl overflow-y-auto p-2 mt-3 mb-3 transition-transform duration-300 transform -translate-x-full lg:translate-x-0">
 
 
 
@@ -71,7 +70,7 @@
 </div>
 
 
-<div class="content flex-col justify-items-center pl-60">
+<div class="content flex-col justify-items-center md:pl-60">
   <jsp:include page="${page}" />
 </div>
 

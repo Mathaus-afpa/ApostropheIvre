@@ -27,7 +27,7 @@
 
 <h2 class="space-y-96 text-5xl mt-20">Nouveautés :</h2>
 
-<div class="card-container flex justify-center mt-8 gap-20">
+<div class="card-container flex flex-col md:flex-row justify-center mt-8 gap-8">
 
     <!--  Début Livres cards -->
     <div class="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
@@ -35,7 +35,7 @@
         <a href="${pageContext.request.contextPath}/livre/details">
 
             <img src="${pageContext.request.contextPath}/Images/livres/2757851357.jpg" alt="photo livre"
-                 class="h-80 w-80 object-cover rounded-t-xl"/>
+                 class="h-[21rem] w-full p-3 rounded-t-xl"/>
 
             <div class="px-3 py-3 w-full">
 
@@ -54,9 +54,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
+                            class=" w-full group flex justify-center rounded-lg bg-green-500 border border-white px-5 py-3 text-white ease-out duration-300 hover:bg-gray-800 active:bg-green-700"
                             href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-normal drop-shadow-lg tracking-[.20em] group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -73,7 +73,7 @@
 
         <a href="${pageContext.request.contextPath}/livres/details">
 
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-[21rem] w-full p-3 rounded-t-xl" />
 
             <div class="px-3 py-3 w-full">
 
@@ -92,9 +92,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
+                            class=" w-full group flex justify-center rounded-lg bg-green-500 border border-white px-5 py-3 text-white ease-out duration-300 hover:bg-gray-800 active:bg-green-700"
                             href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-normal drop-shadow-lg tracking-[.20em] group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
@@ -111,7 +111,7 @@
         <a href=
                    /livres/details">
 
-            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-80 w-80 object-cover rounded-t-xl" />
+            <img src="./Images/livres/2757851357.jpg" alt="photo livre" class="h-[21rem] w-full p-3 rounded-t-xl" />
 
             <div class="px-3 py-3 w-full">
 
@@ -130,9 +130,9 @@
                 <div class="mt-4 text-sm font-medium">
 
                     <a
-                            class=" w-full group flex justify-center rounded-lg border border-current px-5 py-3 text-gray-700 ease-out duration-300 hover:border-none hover:bg-gray-600 active:bg-gray-800"
+                            class=" w-full group flex justify-center rounded-lg bg-green-500 border border-white px-5 py-3 text-white ease-out duration-300 hover:bg-gray-800 active:bg-green-700"
                             href="#">
-                        <span class="font-medium group-hover:text-green-400 group-hover:font-normal">Emprunter</span>
+                        <span class="font-normal drop-shadow-lg tracking-[.20em] group-hover:text-lime-400 group-hover:font-normal">Emprunter</span>
 
                     </a>
 
