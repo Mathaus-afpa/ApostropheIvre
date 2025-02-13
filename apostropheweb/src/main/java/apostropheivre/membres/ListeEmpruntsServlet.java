@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.Array;
 
 @WebServlet("/gestion/emprunts")
 public class ListeEmpruntsServlet extends HttpServlet {
@@ -27,15 +28,18 @@ public class ListeEmpruntsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("id", request.getParameter("idSup"));
         if (request.getAttribute("id") != null) {
-            doDelete(request, response);
 
             try {
-                EmpruntDAO emd = new EmpruntDAO();
+                System.out.println(request.getParameter("idSup"));
+                doDelete(request, response);
+                response.setHeader("Refresh","0;URL="+request.getRequestURI());
 
-                request.setAttribute("Liste_Emprunts", emd.findAll());
-                request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_emprunts.jsp");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
-                dispatcher.forward(request, response);
+//                EmpruntDAO emd = new EmpruntDAO();
+//
+//                request.setAttribute("Liste_Emprunts", emd.findAll());
+//                request.setAttribute("page", "/WEB-INF/Vues/Gestion/liste_emprunts.jsp");
+//                RequestDispatcher dispatcher = request.getRequestDispatcher("../app.jsp");
+//                dispatcher.forward(request, response);
             } catch (ServletException e) {
                 Log.error(e.getMessage(), e);
             }
@@ -45,7 +49,8 @@ public class ListeEmpruntsServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             EmpruntDAO emd = new EmpruntDAO();
-            emd.delete(Integer.parseInt((String) request.getAttribute("id")));
+            String[] values=request.getAttribute("id").toString().split(",");
+            emd.delete(Integer.parseInt(values[0]), Integer.parseInt(values[1]),Integer.parseInt(values[2]));
         } catch (Exception e){
             Log.error(e.getMessage(), e);
         }

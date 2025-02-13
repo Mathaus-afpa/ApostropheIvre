@@ -121,7 +121,7 @@ public class ClientDAO extends DAOgenerale<Client> {
     }
 
     @Override
-    public List findAll() {
+    public List<Client> findAll() {
         String selectSQL = "select * from client";
         List<Client> listCli = new ArrayList<>();
 

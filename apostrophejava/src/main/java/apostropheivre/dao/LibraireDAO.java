@@ -1,8 +1,11 @@
 package apostropheivre.dao;
 
+import apostropheivre.models.Client;
 import apostropheivre.models.Libraire;
+import apostropheivre.models.Livre;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -163,6 +166,32 @@ public class LibraireDAO extends DAOgenerale<Libraire> {
 
         }
 
+    }
+
+    public List<Libraire> listerTous() throws SQLException {
+        List<Libraire> libraires = new ArrayList<>();
+        String sql = "SELECT * FROM libraire;";
+
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()) {
+                Libraire lib = new Libraire(
+                        rs.getInt("Lib_id"),
+                        rs.getString("Lib_nom"),
+                        rs.getString("Lib_prenom")
+                );
+
+                libraires.add(lib);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
+        }
+        return libraires;
     }
 
 }

@@ -20,7 +20,6 @@ public class Servlet404 extends HttpServlet {
             Log.error(e.getMessage(), e);
         }
     }
-    //TODO : niquer sa race
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {

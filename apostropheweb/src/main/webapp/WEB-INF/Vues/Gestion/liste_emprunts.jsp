@@ -48,12 +48,13 @@
                         <c:out value="${i.getStatut()}" escapeXml="false"/>
                     </td>
                     <td style="border-style: solid; border-width:1px">
-                        <a href="${pageContext.request.contextPath}/gestion/emprunts/details?id= ">
+                        <a href="${pageContext.request.contextPath}/gestion/emprunts/details?idCli=${i.id_client}&idLiv=${i.id_livre}&idLib=${i.id_libraire}">
                             <button type="button">Modifier</button>
                         </a>
                     </td>
                     <td style="border-style: solid; border-width:1px">
-                        <button type="submit" name="idSup" value=" " id="supprimerButton">Supprimer</button>
+                        <button type="submit" name="idSup" value="${i.id_client},${i.id_livre},${i.id_libraire}"
+                                id="supprimerButton">Supprimer</button>
                     </td>
                 </tr>
             </c:forEach>

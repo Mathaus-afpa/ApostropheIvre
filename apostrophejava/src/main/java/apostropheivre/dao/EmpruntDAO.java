@@ -76,22 +76,22 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         return listEmp;
     }
 
-    public String update(Emprunt obj, Integer nCli, Integer nLiv, Integer nLib, Date nDate, Integer nStatut) {
-        StringBuilder updateSQL = new StringBuilder("update Emprunter set cli_id=?, liv_id=?, lib_id=?, date_emprunt=?, statut=?" +
+    public String update(Emprunt obj, Integer cli, Integer liv, Integer lib) {
+        StringBuilder updateSQL = new StringBuilder("update Emprunter set cli_id=?, liv_id=?, lib_id=?, date_emprunt=?, statut=? " +
                 "where cli_id = ? AND liv_id = ? AND lib_id = ?");
 
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(updateSQL.toString());
 
-            pstmt.setInt(1, nCli);
-            pstmt.setInt(2, nLiv);
-            pstmt.setInt(3, nLib);
-            pstmt.setDate(4, nDate);
-            pstmt.setInt(5, nStatut);
-            pstmt.setInt(6, obj.getId_client());
-            pstmt.setInt(7, obj.getId_livre());
-            pstmt.setInt(8, obj.getId_libraire());
+            pstmt.setInt(1, obj.getId_client());
+            pstmt.setInt(2, obj.getId_livre());
+            pstmt.setInt(3, obj.getId_libraire());
+            pstmt.setDate(4, obj.getDate_emprunt());
+            pstmt.setInt(5, obj.getStatut());
+            pstmt.setInt(6, cli);
+            pstmt.setInt(7, liv);
+            pstmt.setInt(8, lib);
 
             pstmt.executeUpdate();
 
@@ -104,16 +104,16 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
         }
     }
 
-    public String delete(Emprunt obj) {
+    public String delete(Integer id_cli, Integer id_liv, Integer id_lib) {
         StringBuilder deleteSQL = new StringBuilder("delete from Emprunter where cli_id=? AND liv_id=? AND lib_id=?");
 
         try {
             Connection con = BDDservice.getInstance().getConnection();
             PreparedStatement pstmt = con.prepareStatement(deleteSQL.toString());
 
-            pstmt.setInt(1, obj.getId_client());
-            pstmt.setInt(2, obj.getId_livre());
-            pstmt.setInt(3, obj.getId_libraire());
+            pstmt.setInt(1, id_cli);
+            pstmt.setInt(2, id_liv);
+            pstmt.setInt(3, id_lib);
 
             pstmt.executeUpdate();
 
