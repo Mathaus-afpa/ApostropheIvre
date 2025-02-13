@@ -12,7 +12,7 @@
 <%--    </form>--%>
 <%--</div>--%>
 
-<div class="rounded-b-lg w-[32rem] mt-56">
+<div class="rounded-b-lg w-full mt-32 lg:w-[32rem] lg:mt-56">
 
     <div class="p-8">
 
@@ -116,7 +116,7 @@
         </form>
     </div>
 
-    <div class="px-8 py-4 bg-gray-700 text-center rounded-xl">
+    <div class="px-8 py-4 bg-gray-700 text-center lg:rounded-xl">
 
         <span class="text-gray-400">Pas encore membre ?</span>
         <a class="font-medium text-green-500 hover:text-green-400 ease-out duration-300 hover:underline hover:underline-offset-4"

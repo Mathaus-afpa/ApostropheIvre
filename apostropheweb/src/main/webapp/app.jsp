@@ -3,9 +3,71 @@
 <%@ include file="head.html" %>
 
 
-<div class="sidebar fixed top-0 bottom-0 left-0 lg:left-0 w-64 bg-slate-50 shadow-lg shadow-gray-500 rounded-r-xl overflow-y-auto p-2 mt-3 mb-3 transition-transform duration-300 transform -translate-x-full lg:translate-x-0">
+<%-- 00000000000000000000000000000000000000000000000000000000000000 Top Navbar small screen 00000000000000000000000000000000000000000000000000000000000000 --%>
+
+<div
+        class="z-20 mt-2 transition-all duration-[450ms] ease-in-out w-75 md:pl-60 lg:hidden block fixed"
+>
+  <article
+          class="border border-solid border-gray-700 w-full left-0 rounded-2xl flex shadow-lg shadow-black/15 bg-white"
+  >
+    <a href="${pageContext.request.contextPath}/accueil"
+            class="group relative w-full h-16 p-4 border-solid border-black/10 group flex flex-row gap-3 items-center justify-center text-black rounded-xl active:fill-green-400"
+
+    >
+      <svg
+              class="fill-black text-2xl ease-in-out duration-100 group-active:fill-green-400"
+           xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#d6e2f4"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+
+    </a>
+
+    <a href="${pageContext.request.contextPath}/connexion" class="group relative w-full h-16 p-4 ease-in-out duration-300 border-solid border-black/10 group flex flex-row gap-3 items-center justify-center text-black rounded-xl"
+    >
+      <svg
+              viewBox="0 0 24 24"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-black text-2xl ease-in-out duration-100 group-active:fill-green-400"
+      >
+        <path
+                d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"
+        ></path>
+      </svg>
+    </a>
+    <a href="${pageContext.request.contextPath}/livres"
+            class="group relative w-full h-16 p-4 border-solid border-black/10 group flex flex-row gap-3 items-center justify-center text-black rounded-xl"
+
+    >
+      <svg
+              class="duration-100 group-active:fill-green-400 fill-black text-2xl" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#d6e2f4"><path
+              d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"/></svg>
+    </a>
+    <a href="${pageContext.request.contextPath}/cgu"
+            class="group relative w-full h-16 p-4 border-solid border-black/10 group flex flex-row gap-3 items-center justify-center text-black rounded-xl"
+    >
+      <svg
+              viewBox="0 0 24 24"
+              height="24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="group-active:fill-green-400 text-2xl ease-in-out duration-100"
+      >
+        <path
+                d="M11.953 2C6.465 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.493 2 11.953 2zM12 20c-4.411 0-8-3.589-8-8s3.567-8 7.953-8C16.391 4 20 7.589 20 12s-3.589 8-8 8z"
+        ></path>
+        <path d="M11 7h2v7h-2zm0 8h2v2h-2z"></path>
+      </svg>
+    </a>
+  </article>
+</div>
 
 
+<%-- 00000000000000000000000000000000000000000000000000000000000000 Top Navbar small screen 00000000000000000000000000000000000000000000000000000000000000 --%>
+
+
+
+<div class="sidebar hidden lg:block fixed top-0 bottom-0 left-0 lg:left-0 w-64 bg-slate-50 shadow-lg shadow-gray-500 rounded-r-xl overflow-y-auto p-2 mt-3 mb-3 transition-transform duration-300 transform -translate-x-full lg:translate-x-0">
 
   <div class="flex flex-col items-center p-2 mb-4">
 
