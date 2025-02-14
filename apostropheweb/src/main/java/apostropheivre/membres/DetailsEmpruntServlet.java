@@ -41,11 +41,7 @@ public class DetailsEmpruntServlet extends HttpServlet {
                 request.setAttribute("idLib", idLib);
                 request.setAttribute("page", "/WEB-INF/Vues/Gestion/details_emprunt.jsp");
 
-                try {
-                    request.setAttribute("emp", empD.find(idCli, idLiv, idLib));
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                request.setAttribute("emp", empD.find(idCli, idLiv, idLib));
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/app.jsp");
                 dispatcher.forward(request, response);

@@ -65,7 +65,7 @@
 
 <div>
     <br/> <br/>
-    <a href="${pageContext.request.contextPath}/gestion/emprunts/ajout">
+    <a href="${pageContext.request.contextPath}/gestion/emprunts/emprunter">
         <button type="button" name="ajoutEmp" id="ajoutEmpBut">Ajouter un emprunt</button>
     </a>
 </div>

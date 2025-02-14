@@ -12,8 +12,9 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
     @Override
     public int create(Emprunt obj) {
         StringBuilder insertSQL = new StringBuilder("insert into Emprunter (cli_id, liv_id, lib_id, date_emprunt, statut) values (?,?,?,?,?)");
-        try (Connection con = BDDservice.getInstance().getConnection();
-             PreparedStatement pstmt = con.prepareStatement(insertSQL.toString())) {
+        try {
+            Connection con = BDDservice.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement(insertSQL.toString());
 
             pstmt.setInt(1, obj.getId_client());
             pstmt.setInt(2, obj.getId_livre());
@@ -26,6 +27,8 @@ public class EmpruntDAO extends DAOgenerale<Emprunt> {
             return (1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            BDDservice.getInstance().closeConnection();
         }
     }
 
